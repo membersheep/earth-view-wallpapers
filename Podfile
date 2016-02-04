@@ -5,6 +5,7 @@ use_frameworks!
 
 target 'EarthWallpapers' do
 pod 'Alamofire', '~> 3.0'
+pod 'HTMLReader', '~> 0.9'
 end
 
 target 'EarthWallpapersTests' do

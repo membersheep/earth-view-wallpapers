@@ -1,12 +1,15 @@
 PODS:
   - Alamofire (3.1.5)
+  - HTMLReader (0.9.4)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
+  - HTMLReader (~> 0.9)
 
 SPEC CHECKSUMS:
   Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
+  HTMLReader: 03e9da607f2f9924f9cf4b5e5c4143932004257f
 
-PODFILE CHECKSUM: 7fa06b8e7238149bb657239667e859fb4263cc06
+PODFILE CHECKSUM: 772892f55f74b3caba800fc74ae4e99b5ff5c4a2
 
 COCOAPODS: 1.0.0.beta.3
