@@ -23,6 +23,8 @@
 		1B273D211C6364EE00F72CDE /* EarthImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D1F1C6364EE00F72CDE /* EarthImageService.swift */; };
 		1B273D231C63650000F72CDE /* WallpaperManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D221C63650000F72CDE /* WallpaperManager.swift */; };
 		1B273D241C63650000F72CDE /* WallpaperManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D221C63650000F72CDE /* WallpaperManager.swift */; };
+		20C478081B67FB688FEBA852 /* Pods_EarthWallpapers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEA326721841E3846D5569F /* Pods_EarthWallpapers.framework */; };
+		8AFC4B715BD13801EBE14798 /* Pods_EarthWallpapersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74876C99CAC7FE7F71AD7E5F /* Pods_EarthWallpapersTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,12 @@
 		1B273D161C635D4300F72CDE /* WallpaperManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperManagerProtocol.swift; sourceTree = "<group>"; };
 		1B273D1F1C6364EE00F72CDE /* EarthImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthImageService.swift; sourceTree = "<group>"; };
 		1B273D221C63650000F72CDE /* WallpaperManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperManager.swift; sourceTree = "<group>"; };
+		6236DA0AF5CD157F52A20DC0 /* Pods-EarthWallpapers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarthWallpapers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarthWallpapers/Pods-EarthWallpapers.debug.xcconfig"; sourceTree = "<group>"; };
+		6AEA326721841E3846D5569F /* Pods_EarthWallpapers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EarthWallpapers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74876C99CAC7FE7F71AD7E5F /* Pods_EarthWallpapersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EarthWallpapersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDB20ABA130F43DB148E380E /* Pods-EarthWallpapersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarthWallpapersTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarthWallpapersTests/Pods-EarthWallpapersTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DC21823576220AE031EC2F81 /* Pods-EarthWallpapersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarthWallpapersTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EarthWallpapersTests/Pods-EarthWallpapersTests.release.xcconfig"; sourceTree = "<group>"; };
+		F727396F54068C9A8BFAE78F /* Pods-EarthWallpapers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarthWallpapers.release.xcconfig"; path = "Pods/Target Support Files/Pods-EarthWallpapers/Pods-EarthWallpapers.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20C478081B67FB688FEBA852 /* Pods_EarthWallpapers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,18 +73,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AFC4B715BD13801EBE14798 /* Pods_EarthWallpapersTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F83640E4A4124B7FAE327DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6236DA0AF5CD157F52A20DC0 /* Pods-EarthWallpapers.debug.xcconfig */,
+				F727396F54068C9A8BFAE78F /* Pods-EarthWallpapers.release.xcconfig */,
+				BDB20ABA130F43DB148E380E /* Pods-EarthWallpapersTests.debug.xcconfig */,
+				DC21823576220AE031EC2F81 /* Pods-EarthWallpapersTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		1B273CE61C634CA300F72CDE = {
 			isa = PBXGroup;
 			children = (
 				1B273CF11C634CA300F72CDE /* EarthWallpapers */,
 				1B273D011C634CA300F72CDE /* EarthWallpapersTests */,
 				1B273CF01C634CA300F72CDE /* Products */,
+				0F83640E4A4124B7FAE327DF /* Pods */,
+				FEAB8AA2AB66A924D14BEB15 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +137,15 @@
 			path = EarthWallpapersTests;
 			sourceTree = "<group>";
 		};
+		FEAB8AA2AB66A924D14BEB15 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6AEA326721841E3846D5569F /* Pods_EarthWallpapers.framework */,
+				74876C99CAC7FE7F71AD7E5F /* Pods_EarthWallpapersTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,9 +153,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B273D071C634CA300F72CDE /* Build configuration list for PBXNativeTarget "EarthWallpapers" */;
 			buildPhases = (
+				209FDFB776486F5D8F97C375 /* Check Pods Manifest.lock */,
 				1B273CEB1C634CA300F72CDE /* Sources */,
 				1B273CEC1C634CA300F72CDE /* Frameworks */,
 				1B273CED1C634CA300F72CDE /* Resources */,
+				7CCAC723D884EF1DF98E3DB0 /* Embed Pods Frameworks */,
+				8818EEBCC8D602E3CA75F001 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -138,9 +173,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B273D0A1C634CA300F72CDE /* Build configuration list for PBXNativeTarget "EarthWallpapersTests" */;
 			buildPhases = (
+				FBA61987BDB3DD14CE6CD8B4 /* Check Pods Manifest.lock */,
 				1B273CFA1C634CA300F72CDE /* Sources */,
 				1B273CFB1C634CA300F72CDE /* Frameworks */,
 				1B273CFC1C634CA300F72CDE /* Resources */,
+				5727C8A11A34C2A7F41DE3A8 /* Embed Pods Frameworks */,
+				7EC76678BBA443FCA082B453 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -208,6 +246,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		209FDFB776486F5D8F97C375 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5727C8A11A34C2A7F41DE3A8 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EarthWallpapersTests/Pods-EarthWallpapersTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CCAC723D884EF1DF98E3DB0 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EarthWallpapers/Pods-EarthWallpapers-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EC76678BBA443FCA082B453 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EarthWallpapersTests/Pods-EarthWallpapersTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8818EEBCC8D602E3CA75F001 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EarthWallpapers/Pods-EarthWallpapers-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBA61987BDB3DD14CE6CD8B4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1B273CEB1C634CA300F72CDE /* Sources */ = {
@@ -342,6 +473,7 @@
 		};
 		1B273D081C634CA300F72CDE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6236DA0AF5CD157F52A20DC0 /* Pods-EarthWallpapers.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -355,6 +487,7 @@
 		};
 		1B273D091C634CA300F72CDE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F727396F54068C9A8BFAE78F /* Pods-EarthWallpapers.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -368,6 +501,7 @@
 		};
 		1B273D0B1C634CA300F72CDE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDB20ABA130F43DB148E380E /* Pods-EarthWallpapersTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -381,6 +515,7 @@
 		};
 		1B273D0C1C634CA300F72CDE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC21823576220AE031EC2F81 /* Pods-EarthWallpapersTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
