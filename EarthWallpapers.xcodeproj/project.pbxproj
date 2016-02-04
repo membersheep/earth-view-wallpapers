@@ -11,6 +11,18 @@
 		1B273CF51C634CA300F72CDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B273CF41C634CA300F72CDE /* Assets.xcassets */; };
 		1B273CF81C634CA300F72CDE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B273CF61C634CA300F72CDE /* MainMenu.xib */; };
 		1B273D031C634CA300F72CDE /* EarthWallpapersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D021C634CA300F72CDE /* EarthWallpapersTests.swift */; };
+		1B273D0E1C634CFC00F72CDE /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D0D1C634CFC00F72CDE /* AppController.swift */; };
+		1B273D0F1C634CFC00F72CDE /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D0D1C634CFC00F72CDE /* AppController.swift */; };
+		1B273D171C635D4300F72CDE /* ImageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D131C635D4300F72CDE /* ImageServiceProtocol.swift */; };
+		1B273D181C635D4300F72CDE /* ImageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D131C635D4300F72CDE /* ImageServiceProtocol.swift */; };
+		1B273D1B1C635D4300F72CDE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D151C635D4300F72CDE /* Result.swift */; };
+		1B273D1C1C635D4300F72CDE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D151C635D4300F72CDE /* Result.swift */; };
+		1B273D1D1C635D4300F72CDE /* WallpaperManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D161C635D4300F72CDE /* WallpaperManagerProtocol.swift */; };
+		1B273D1E1C635D4300F72CDE /* WallpaperManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D161C635D4300F72CDE /* WallpaperManagerProtocol.swift */; };
+		1B273D201C6364EE00F72CDE /* EarthImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D1F1C6364EE00F72CDE /* EarthImageService.swift */; };
+		1B273D211C6364EE00F72CDE /* EarthImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D1F1C6364EE00F72CDE /* EarthImageService.swift */; };
+		1B273D231C63650000F72CDE /* WallpaperManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D221C63650000F72CDE /* WallpaperManager.swift */; };
+		1B273D241C63650000F72CDE /* WallpaperManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D221C63650000F72CDE /* WallpaperManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +44,12 @@
 		1B273CFE1C634CA300F72CDE /* EarthWallpapersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarthWallpapersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B273D021C634CA300F72CDE /* EarthWallpapersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthWallpapersTests.swift; sourceTree = "<group>"; };
 		1B273D041C634CA300F72CDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B273D0D1C634CFC00F72CDE /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		1B273D131C635D4300F72CDE /* ImageServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageServiceProtocol.swift; sourceTree = "<group>"; };
+		1B273D151C635D4300F72CDE /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		1B273D161C635D4300F72CDE /* WallpaperManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperManagerProtocol.swift; sourceTree = "<group>"; };
+		1B273D1F1C6364EE00F72CDE /* EarthImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthImageService.swift; sourceTree = "<group>"; };
+		1B273D221C63650000F72CDE /* WallpaperManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +92,12 @@
 			isa = PBXGroup;
 			children = (
 				1B273CF21C634CA300F72CDE /* AppDelegate.swift */,
+				1B273D0D1C634CFC00F72CDE /* AppController.swift */,
+				1B273D131C635D4300F72CDE /* ImageServiceProtocol.swift */,
+				1B273D1F1C6364EE00F72CDE /* EarthImageService.swift */,
+				1B273D161C635D4300F72CDE /* WallpaperManagerProtocol.swift */,
+				1B273D221C63650000F72CDE /* WallpaperManager.swift */,
+				1B273D151C635D4300F72CDE /* Result.swift */,
 				1B273CF41C634CA300F72CDE /* Assets.xcassets */,
 				1B273CF61C634CA300F72CDE /* MainMenu.xib */,
 				1B273CF91C634CA300F72CDE /* Info.plist */,
@@ -190,7 +214,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B273D231C63650000F72CDE /* WallpaperManager.swift in Sources */,
+				1B273D1D1C635D4300F72CDE /* WallpaperManagerProtocol.swift in Sources */,
+				1B273D1B1C635D4300F72CDE /* Result.swift in Sources */,
+				1B273D201C6364EE00F72CDE /* EarthImageService.swift in Sources */,
 				1B273CF31C634CA300F72CDE /* AppDelegate.swift in Sources */,
+				1B273D0E1C634CFC00F72CDE /* AppController.swift in Sources */,
+				1B273D171C635D4300F72CDE /* ImageServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +228,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B273D241C63650000F72CDE /* WallpaperManager.swift in Sources */,
+				1B273D1E1C635D4300F72CDE /* WallpaperManagerProtocol.swift in Sources */,
+				1B273D1C1C635D4300F72CDE /* Result.swift in Sources */,
+				1B273D211C6364EE00F72CDE /* EarthImageService.swift in Sources */,
 				1B273D031C634CA300F72CDE /* EarthWallpapersTests.swift in Sources */,
+				1B273D0F1C634CFC00F72CDE /* AppController.swift in Sources */,
+				1B273D181C635D4300F72CDE /* ImageServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +347,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = EarthWallpapers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = mem.EarthWallpapers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -323,6 +360,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = EarthWallpapers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = mem.EarthWallpapers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -373,6 +411,7 @@
 				1B273D091C634CA300F72CDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1B273D0A1C634CA300F72CDE /* Build configuration list for PBXNativeTarget "EarthWallpapersTests" */ = {
 			isa = XCConfigurationList;
@@ -381,6 +420,7 @@
 				1B273D0C1C634CA300F72CDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

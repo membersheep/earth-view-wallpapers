@@ -1,0 +1,1 @@
+pod 'Alamofire', '~> 3.0'
