@@ -21,6 +21,7 @@ class AppController: NSObject {
     
     override func awakeFromNib() {
         setupStatusIcon()
+        self.imageService = EarthImageService();
     }
     
     func setDependencies(imageService: ImageServiceProtocol, wallpaperManager: WallpaperManagerProtocol) {
@@ -39,25 +40,27 @@ class AppController: NSObject {
     // MARK: Actions
     
     @IBAction func updateWallpaperButtonClicked(sender: NSMenuItem) {
-        guard let imageService = self.imageService, wallpaperManager = self.wallpaperManager else {
+        guard let imageService = self.imageService else {
             // TODO: THROW ERROR MESSAGE (alert or something)
+            print("dependency missing")
             return
         }
 
-        imageService.getImage({ (result: Result<NSURL>) -> Void in
+        imageService.getImage({ result in
             switch result {
             case .Success(let url):
-                wallpaperManager.setWallpaper(url, completionHandler: {
-                    (result: Result<Bool>) -> Void in
-                    switch result {
-                    case .Success(let success):
-                        // TODO: Display success notification
-                        print(success)
-                    case .Error(let error):
-                        // TODO: Display error notification
-                        print(error)
-                    }
-                })
+                print(url)
+//                wallpaperManager.setWallpaper(url, completionHandler: {
+//                    (result: Result<Bool>) -> Void in
+//                    switch result {
+//                    case .Success(let success):
+//                        // TODO: Display success notification
+//                        print(success)
+//                    case .Error(let error):
+//                        // TODO: Display error notification
+//                        print(error)
+//                    }
+//                })
             case .Error(let error):
                 print(error)
             }
