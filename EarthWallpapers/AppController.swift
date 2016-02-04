@@ -22,6 +22,7 @@ class AppController: NSObject {
     override func awakeFromNib() {
         setupStatusIcon()
         self.imageService = EarthImageService();
+        self.wallpaperManager = WallpaperManager();
     }
     
     func setDependencies(imageService: ImageServiceProtocol, wallpaperManager: WallpaperManagerProtocol) {
@@ -50,17 +51,17 @@ class AppController: NSObject {
             switch result {
             case .Success(let url):
                 print("filename \(url)")
-//                wallpaperManager.setWallpaper(url, completionHandler: {
-//                    (result: Result<Bool>) -> Void in
-//                    switch result {
-//                    case .Success(let success):
-//                        // TODO: Display success notification
-//                        print(success)
-//                    case .Error(let error):
-//                        // TODO: Display error notification
-//                        print(error)
-//                    }
-//                })
+                self.wallpaperManager!.setWallpaper(url, completionHandler: {
+                    (result: Result<Bool>) -> Void in
+                    switch result {
+                    case .Success(let success):
+                        // TODO: Display success notification
+                        print(success)
+                    case .Error(let error):
+                        // TODO: Display error notification
+                        print(error)
+                    }
+                })
             case .Error(let error):
                 print(error)
             }
