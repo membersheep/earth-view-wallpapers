@@ -26,7 +26,14 @@ class EarthImageService: ImageServiceProtocol {
                 self.getImageUrlfromHTML(document, completionHandler: {result in
                     switch result {
                     case .Success(let urlString):
-                        self.downloadImage(urlString)
+                        self.downloadImage(urlString, completionHandler: {result in
+                            switch result {
+                            case .Success(let fileName):
+                                completionHandler(Result.Success(fileName))
+                            case .Error(let error):
+                                print(error)
+                            }
+                        })
                     case .Error(let error):
                         print(error)
                     }
@@ -78,11 +85,16 @@ class EarthImageService: ImageServiceProtocol {
         completionHandler(Result.Success(urlString))
     }
     
-    func downloadImage(imgURL: URLStringConvertible) {
-        let destination = Alamofire.Request.suggestedDownloadDestination(directory: .DocumentDirectory, domain: .UserDomainMask)
+    func downloadImage(imgURL: URLStringConvertible, completionHandler: Result<NSURL> -> Void) {
         print("Downloading \(imgURL)")
-        Alamofire.download(.GET, imgURL, destination: destination)
-            .progress { bytesRead, totalBytesRead, totalBytesExpectedToRead in
+        
+        Alamofire.download(.GET, imgURL) { temporaryURL, response in
+            let fileManager = NSFileManager.defaultManager()
+            let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+            let pathComponent = response.suggestedFilename
+            
+            return directoryURL.URLByAppendingPathComponent(pathComponent!)
+        }.progress { bytesRead, totalBytesRead, totalBytesExpectedToRead in
                 print(totalBytesRead)
                 
                 // This closure is NOT called on the main queue for performance
@@ -90,12 +102,14 @@ class EarthImageService: ImageServiceProtocol {
                 dispatch_async(dispatch_get_main_queue()) {
                     print("Total bytes read on main queue: \(totalBytesRead)")
                 }
-            }
-            .response { _, _, _, error in
+        }.response { _, response, _, error in
                 if let error = error {
                     print("Failed with error: \(error)")
                 } else {
                     print("Downloaded file successfully")
+                    let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+                    directoryURL.URLByAppendingPathComponent(response!.suggestedFilename!)
+                    completionHandler(Result.Success(directoryURL.URLByAppendingPathComponent(response!.suggestedFilename!)));
                 }
         }
     }

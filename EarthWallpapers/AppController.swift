@@ -49,7 +49,7 @@ class AppController: NSObject {
         imageService.getImage({ result in
             switch result {
             case .Success(let url):
-                print(url)
+                print("filename \(url)")
 //                wallpaperManager.setWallpaper(url, completionHandler: {
 //                    (result: Result<Bool>) -> Void in
 //                    switch result {
