@@ -10,6 +10,8 @@ import Foundation
 
 enum ImageServiceError: ErrorType {
     case GenericError
+    case EmptyResponseError
+    case ParsingError
 }
 
 protocol ImageServiceProtocol {

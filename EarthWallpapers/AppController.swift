@@ -26,7 +26,6 @@ class AppController: NSObject {
         self.wallpaperManager = WallpaperManager();
     }
     
-    // TODO: INJECT SERVICES
     func setDependencies(imageService: ImageServiceProtocol, wallpaperManager: WallpaperManagerProtocol) {
         self.imageService = imageService
         self.wallpaperManager = wallpaperManager
@@ -43,28 +42,25 @@ class AppController: NSObject {
     // MARK: Actions
     
     @IBAction func updateWallpaperButtonClicked(sender: NSMenuItem) {
-        guard let imageService = self.imageService else {
-            // TODO: THROW ERROR MESSAGE (alert or something)
-            print("missing dependencies")
+        guard let imageService = self.imageService, let wallpaperManager = self.wallpaperManager else {
+            showAlert("missing dependencies")
             return
         }
 
         imageService.getImage({ result in
             switch result {
             case .Success(let url):
-                print("filename \(url)")
-                self.wallpaperManager!.setWallpaper(url, completionHandler: { result in
+                wallpaperManager.setWallpaper(url, completionHandler: {
+                    result in
                     switch result {
-                    case .Success(let success):
-                        // TODO: Display success notification
-                        print(success)
+                    case .Success(_):
+                        break
                     case .Error(let error):
-                        // TODO: Display error notification
-                        print(error)
+                        self.showAlert("\(error)")
                     }
                 })
             case .Error(let error):
-                print(error)
+                self.showAlert("\(error)")
             }
         })
     }
@@ -76,5 +72,15 @@ class AppController: NSObject {
     
     @IBAction func quitButtonClicked(sender: AnyObject) {
         NSApplication.sharedApplication().terminate(self)
+    }
+    
+    // MARK: Reactions
+    
+    private func showAlert(text: String) {
+        let alert = NSAlert()
+        alert.messageText = "Error"
+        alert.addButtonWithTitle("OK")
+        alert.informativeText = text
+        alert.runModal()
     }
 }

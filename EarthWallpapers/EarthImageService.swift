@@ -10,10 +10,11 @@ import Foundation
 import Alamofire
 import HTMLReader
 
-class EarthImageService: ImageServiceProtocol {
+struct EarthImageService: ImageServiceProtocol {
     
     private let EARTHVIEW_URL = "https://earthview.withgoogle.com/"
     private let BACKGROUND_CLASS_NAME = "background"
+    private let BACKGROUND_ATTRIBUTE_NAME = "style"
     
     func getImage(completionHandler: Result<NSURL, ImageServiceError> -> Void) {
         self.downloadHTMLPage({result in
@@ -42,13 +43,14 @@ class EarthImageService: ImageServiceProtocol {
     
     func downloadHTMLPage(completionHandler: Result<HTMLDocument, ErrorType> -> Void) {
         Alamofire.request(.GET, EARTHVIEW_URL)
-            .responseString { responseString in
-                guard responseString.result.error == nil else {
-                    completionHandler(Result.Error(ImageServiceError.GenericError))
+            .responseString {
+                response in
+                guard response.result.error == nil else {
+                    completionHandler(Result.Error(response.result.error!))
                     return
                 }
-                guard let htmlAsString = responseString.result.value else {
-                    completionHandler(Result.Error(ImageServiceError.GenericError))
+                guard let htmlAsString = response.result.value else {
+                    completionHandler(Result.Error(ImageServiceError.EmptyResponseError))
                     return
                 }
                 
@@ -61,18 +63,18 @@ class EarthImageService: ImageServiceProtocol {
     func getImageUrlfromHTML(document:HTMLDocument, completionHandler: Result<URLStringConvertible, ErrorType> -> Void) {
         let divs = document.nodesMatchingSelector("div");
         
-        let backgroundDiv = divs.filter({ div in div.hasClass("background") }).first as? HTMLElement
+        let backgroundDiv = divs.filter({ div in div.hasClass(BACKGROUND_CLASS_NAME) }).first as? HTMLElement
         
         guard let div = backgroundDiv else {
-            completionHandler(Result.Error(ImageServiceError.GenericError))
+            completionHandler(Result.Error(ImageServiceError.ParsingError))
             return
         }
-        guard let styleAttributeValue = div.objectForKeyedSubscript("style") else {
-            completionHandler(Result.Error(ImageServiceError.GenericError))
+        guard let styleAttributeValue = div.objectForKeyedSubscript(BACKGROUND_ATTRIBUTE_NAME) else {
+            completionHandler(Result.Error(ImageServiceError.ParsingError))
             return
         }
         guard let fullUrlString: String = styleAttributeValue as? String else {
-            completionHandler(Result.Error(ImageServiceError.GenericError))
+            completionHandler(Result.Error(ImageServiceError.ParsingError))
             return
         }
         
@@ -81,25 +83,18 @@ class EarthImageService: ImageServiceProtocol {
         completionHandler(Result.Success(urlString))
     }
     
-    func downloadImage(imgURL: URLStringConvertible, completionHandler: Result<NSURL, ErrorType> -> Void) {
-        print("Downloading \(imgURL)")
-        
+    func downloadImage(imgURL: URLStringConvertible, completionHandler: Result<NSURL, ErrorType> -> Void) {       
         Alamofire.download(.GET, imgURL) { temporaryURL, response in
             let fileManager = NSFileManager.defaultManager()
-            let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+            let directoryURL = fileManager.URLsForDirectory(.PicturesDirectory, inDomains: .UserDomainMask)[0]
             let pathComponent = response.suggestedFilename
             
             return directoryURL.URLByAppendingPathComponent(pathComponent!)
-        }.progress { bytesRead, totalBytesRead, totalBytesExpectedToRead in
-                dispatch_async(dispatch_get_main_queue()) {
-                    print("Total bytes read on main queue: \(totalBytesRead/totalBytesExpectedToRead*100)")
-                }
         }.response { _, response, _, error in
                 if let error = error {
-                    print("Failed with error: \(error)")
+                    completionHandler(Result.Error(error))
                 } else {
-                    print("Downloaded file successfully")
-                    let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+                    let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.PicturesDirectory, inDomains: .UserDomainMask)[0]
                     directoryURL.URLByAppendingPathComponent(response!.suggestedFilename!)
                     completionHandler(Result.Success(directoryURL.URLByAppendingPathComponent(response!.suggestedFilename!)));
                 }

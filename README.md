@@ -2,16 +2,15 @@
 ## Features
 - Stays in background (icon in status bar).
 - Starts at startup.
-- Changes wallpaper automatically every (hour, day, week).
+- Changes wallpaper automatically every hour, day, week (user choice).
 - Provides a instant wallpaper change button.
 
-## Future features
-Additional image sources: http://apod.nasa.gov/
+## Future development
+Test everything (maybe some refactoring needed)
+Additional image sources (like http://apod.nasa.gov/)
+Add custom download destination folder in preferences
 
 ## TODO
-- Refactoring
-  - Handle errors
-  - Use Result from alamofire
-  - Inject alamofire as dependency allow testing.
 - Add preferences controller and preferences window
 - Add about window
+- Release

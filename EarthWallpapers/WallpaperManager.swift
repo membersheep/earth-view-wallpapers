@@ -18,7 +18,7 @@ struct WallpaperManager: WallpaperManagerProtocol {
             return
         }
         
-        screens.map({
+        _ = screens.map({
             screen in
             do {
                 try workspace.setDesktopImageURL(path, forScreen: screen, options: workspace.desktopImageOptionsForScreen(screen)!)
