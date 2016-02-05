@@ -16,7 +16,7 @@ class AppController: NSObject {
     
     var imageService: ImageServiceProtocol?
     var wallpaperManager: WallpaperManagerProtocol?
-    
+    var timer: TimerProtocol?
     let preferencesController: PreferencesController = PreferencesController()
     
     // MARK: Setup
@@ -24,8 +24,19 @@ class AppController: NSObject {
     override func awakeFromNib() {
         setupStatusIcon()
         // TODO: INJECT SERVICES INSTEAD OF CREATING THEM HERE
-        self.imageService = EarthImageService();
-        self.wallpaperManager = WallpaperManager();
+        imageService = EarthImageService()
+        wallpaperManager = WallpaperManager()
+        timer = TimerService()
+        
+        let savedTimeInterval = NSUserDefaults.standardUserDefaults().doubleForKey("savedTimeInterval")
+        let timeInterval = savedTimeInterval > 0 ? savedTimeInterval : 3600
+        NSUserDefaults.standardUserDefaults().setDouble(timeInterval, forKey: "savedTimeInterval")
+        
+        let lastTriggerDate = NSUserDefaults.standardUserDefaults().objectForKey("lastTriggerDate") as? NSDate ?? NSDate()
+        
+        timer?.start(lastTriggerDate, interval: savedTimeInterval, triggerFunction: {
+            self.updateWallpaper()
+        })
     }
     
     func setDependencies(imageService: ImageServiceProtocol, wallpaperManager: WallpaperManagerProtocol) {
@@ -44,11 +55,15 @@ class AppController: NSObject {
     // MARK: Actions
     
     @IBAction func updateWallpaperButtonClicked(sender: NSMenuItem) {
+        updateWallpaper()
+    }
+    
+    private func updateWallpaper() {
         guard let imageService = self.imageService, let wallpaperManager = self.wallpaperManager else {
             showAlert("missing dependencies")
             return
         }
-
+        
         imageService.getImage({ result in
             switch result {
             case .Success(let url):
@@ -56,6 +71,7 @@ class AppController: NSObject {
                     result in
                     switch result {
                     case .Success(_):
+                        NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "lastTriggerDate")
                         break
                     case .Error(let error):
                         self.showAlert("\(error)")

@@ -11,6 +11,6 @@ Additional image sources (like http://apod.nasa.gov/)
 Add custom download destination folder in preferences
 
 ## TODO
-- Add preferences controller and preferences window
+- Add timer function
 - Add about window
 - Release

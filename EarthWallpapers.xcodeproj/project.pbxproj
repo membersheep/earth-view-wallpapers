@@ -27,6 +27,10 @@
 		1B6DA8BD1C64B61A008C35FA /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B6DA8BB1C64B619008C35FA /* PreferencesWindow.xib */; };
 		1B6DA8BF1C64B957008C35FA /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6DA8BE1C64B957008C35FA /* PreferencesController.swift */; };
 		1B6DA8C01C64B957008C35FA /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6DA8BE1C64B957008C35FA /* PreferencesController.swift */; };
+		1B6DA8C21C64E61D008C35FA /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6DA8C11C64E61D008C35FA /* TimerService.swift */; };
+		1B6DA8C31C64E61D008C35FA /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6DA8C11C64E61D008C35FA /* TimerService.swift */; };
+		1B6DA8C51C64E63C008C35FA /* TimerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6DA8C41C64E63C008C35FA /* TimerProtocol.swift */; };
+		1B6DA8C61C64E63C008C35FA /* TimerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6DA8C41C64E63C008C35FA /* TimerProtocol.swift */; };
 		20C478081B67FB688FEBA852 /* Pods_EarthWallpapers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEA326721841E3846D5569F /* Pods_EarthWallpapers.framework */; };
 		8AFC4B715BD13801EBE14798 /* Pods_EarthWallpapersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74876C99CAC7FE7F71AD7E5F /* Pods_EarthWallpapersTests.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +62,8 @@
 		1B273D221C63650000F72CDE /* WallpaperManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperManager.swift; sourceTree = "<group>"; };
 		1B6DA8BB1C64B619008C35FA /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 		1B6DA8BE1C64B957008C35FA /* PreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
+		1B6DA8C11C64E61D008C35FA /* TimerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
+		1B6DA8C41C64E63C008C35FA /* TimerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerProtocol.swift; sourceTree = "<group>"; };
 		6236DA0AF5CD157F52A20DC0 /* Pods-EarthWallpapers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarthWallpapers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarthWallpapers/Pods-EarthWallpapers.debug.xcconfig"; sourceTree = "<group>"; };
 		6AEA326721841E3846D5569F /* Pods_EarthWallpapers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EarthWallpapers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74876C99CAC7FE7F71AD7E5F /* Pods_EarthWallpapersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EarthWallpapersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +128,8 @@
 			children = (
 				1B273CF21C634CA300F72CDE /* AppDelegate.swift */,
 				1B273D0D1C634CFC00F72CDE /* AppController.swift */,
+				1B6DA8C11C64E61D008C35FA /* TimerService.swift */,
+				1B6DA8C41C64E63C008C35FA /* TimerProtocol.swift */,
 				1B273D131C635D4300F72CDE /* ImageServiceProtocol.swift */,
 				1B273D1F1C6364EE00F72CDE /* EarthImageService.swift */,
 				1B273D161C635D4300F72CDE /* WallpaperManagerProtocol.swift */,
@@ -358,9 +366,11 @@
 				1B273D231C63650000F72CDE /* WallpaperManager.swift in Sources */,
 				1B273D1D1C635D4300F72CDE /* WallpaperManagerProtocol.swift in Sources */,
 				1B273D1B1C635D4300F72CDE /* Result.swift in Sources */,
+				1B6DA8C21C64E61D008C35FA /* TimerService.swift in Sources */,
 				1B273D201C6364EE00F72CDE /* EarthImageService.swift in Sources */,
 				1B6DA8BF1C64B957008C35FA /* PreferencesController.swift in Sources */,
 				1B273CF31C634CA300F72CDE /* AppDelegate.swift in Sources */,
+				1B6DA8C51C64E63C008C35FA /* TimerProtocol.swift in Sources */,
 				1B273D0E1C634CFC00F72CDE /* AppController.swift in Sources */,
 				1B273D171C635D4300F72CDE /* ImageServiceProtocol.swift in Sources */,
 			);
@@ -373,9 +383,11 @@
 				1B273D241C63650000F72CDE /* WallpaperManager.swift in Sources */,
 				1B273D1E1C635D4300F72CDE /* WallpaperManagerProtocol.swift in Sources */,
 				1B273D1C1C635D4300F72CDE /* Result.swift in Sources */,
+				1B6DA8C31C64E61D008C35FA /* TimerService.swift in Sources */,
 				1B273D211C6364EE00F72CDE /* EarthImageService.swift in Sources */,
 				1B6DA8C01C64B957008C35FA /* PreferencesController.swift in Sources */,
 				1B273D031C634CA300F72CDE /* EarthWallpapersTests.swift in Sources */,
+				1B6DA8C61C64E63C008C35FA /* TimerProtocol.swift in Sources */,
 				1B273D0F1C634CFC00F72CDE /* AppController.swift in Sources */,
 				1B273D181C635D4300F72CDE /* ImageServiceProtocol.swift in Sources */,
 			);
