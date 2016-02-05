@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PreferencesController" customModule="EarthWallpapers" customModuleProvider="target">
+            <connections>
+                <outlet property="startupCheckBox" destination="99t-Ld-dgQ" id="dcY-AY-CXI"/>
+                <outlet property="timeComboBox" destination="R7n-cT-OCL" id="xWC-L0-Qun"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="zmC-Vz-qsz" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" HUD="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="136" y="163" width="322" height="82"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <view key="contentView" id="G6y-qs-eiw">
+                <rect key="frame" x="0.0" y="0.0" width="322" height="82"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JTM-P7-9CJ">
+                        <rect key="frame" x="18" y="45" width="97" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Start at startup" id="eWi-yp-xgY">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ohc-uC-VMC">
+                        <rect key="frame" x="18" y="20" width="182" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Change automatically every..." id="71p-Op-NDk">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="R7n-cT-OCL">
+                        <rect key="frame" x="206" y="16" width="99" height="26"/>
+                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="3" id="dZ2-f1-MpT">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <objectValues>
+                                <string>Hour</string>
+                                <string>Day</string>
+                                <string>Week</string>
+                            </objectValues>
+                        </comboBoxCell>
+                        <connections>
+                            <outlet property="delegate" destination="-2" id="mFX-xl-NTP"/>
+                        </connections>
+                    </comboBox>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="99t-Ld-dgQ">
+                        <rect key="frame" x="206" y="46" width="22" height="18"/>
+                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="qoF-0Q-Cjr">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="checkBoxClicked:" target="-2" id="9Jx-6Z-I6V"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="R7n-cT-OCL" secondAttribute="bottom" constant="20" id="Dat-UY-54H"/>
+                    <constraint firstItem="JTM-P7-9CJ" firstAttribute="leading" secondItem="G6y-qs-eiw" secondAttribute="leading" constant="20" id="E4c-B0-36o"/>
+                    <constraint firstItem="ohc-uC-VMC" firstAttribute="top" secondItem="JTM-P7-9CJ" secondAttribute="bottom" constant="8" id="QSf-0I-SYa"/>
+                    <constraint firstAttribute="trailing" secondItem="R7n-cT-OCL" secondAttribute="trailing" constant="20" id="Qvx-Df-ypE"/>
+                    <constraint firstItem="R7n-cT-OCL" firstAttribute="top" secondItem="99t-Ld-dgQ" secondAttribute="bottom" constant="8" id="XKK-Fx-mDi"/>
+                    <constraint firstItem="99t-Ld-dgQ" firstAttribute="top" secondItem="G6y-qs-eiw" secondAttribute="top" constant="20" id="aIG-kk-N5N"/>
+                    <constraint firstItem="R7n-cT-OCL" firstAttribute="leading" secondItem="ohc-uC-VMC" secondAttribute="trailing" constant="8" id="aXS-qy-L7T"/>
+                    <constraint firstItem="ohc-uC-VMC" firstAttribute="leading" secondItem="G6y-qs-eiw" secondAttribute="leading" constant="20" id="tsd-pS-S25"/>
+                    <constraint firstItem="JTM-P7-9CJ" firstAttribute="top" secondItem="G6y-qs-eiw" secondAttribute="top" constant="20" id="vAO-qF-abw"/>
+                    <constraint firstAttribute="bottom" secondItem="ohc-uC-VMC" secondAttribute="bottom" constant="20" id="wXh-sv-r7b"/>
+                    <constraint firstItem="99t-Ld-dgQ" firstAttribute="leading" secondItem="JTM-P7-9CJ" secondAttribute="trailing" constant="95" id="yfb-aU-ERR"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="421" y="242"/>
+        </window>
+    </objects>
+</document>

@@ -16,7 +16,7 @@ struct EarthImageService: ImageServiceProtocol {
     private let BACKGROUND_CLASS_NAME = "background"
     private let BACKGROUND_ATTRIBUTE_NAME = "style"
     
-    func getImage(completionHandler: Result<NSURL, ImageServiceError> -> Void) {
+    internal func getImage(completionHandler: Result<NSURL, ImageServiceError> -> Void) {
         self.downloadHTMLPage({result in
             switch result {
             case .Success(let document):
@@ -41,7 +41,7 @@ struct EarthImageService: ImageServiceProtocol {
         })
     }
     
-    func downloadHTMLPage(completionHandler: Result<HTMLDocument, ErrorType> -> Void) {
+    private func downloadHTMLPage(completionHandler: Result<HTMLDocument, ErrorType> -> Void) {
         Alamofire.request(.GET, EARTHVIEW_URL)
             .responseString {
                 response in
@@ -60,7 +60,7 @@ struct EarthImageService: ImageServiceProtocol {
         }
     }
     
-    func getImageUrlfromHTML(document:HTMLDocument, completionHandler: Result<URLStringConvertible, ErrorType> -> Void) {
+    private func getImageUrlfromHTML(document:HTMLDocument, completionHandler: Result<URLStringConvertible, ErrorType> -> Void) {
         let divs = document.nodesMatchingSelector("div");
         
         let backgroundDiv = divs.filter({ div in div.hasClass(BACKGROUND_CLASS_NAME) }).first as? HTMLElement
@@ -83,7 +83,7 @@ struct EarthImageService: ImageServiceProtocol {
         completionHandler(Result.Success(urlString))
     }
     
-    func downloadImage(imgURL: URLStringConvertible, completionHandler: Result<NSURL, ErrorType> -> Void) {       
+    private func downloadImage(imgURL: URLStringConvertible, completionHandler: Result<NSURL, ErrorType> -> Void) {       
         Alamofire.download(.GET, imgURL) { temporaryURL, response in
             let fileManager = NSFileManager.defaultManager()
             let directoryURL = fileManager.URLsForDirectory(.PicturesDirectory, inDomains: .UserDomainMask)[0]

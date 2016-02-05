@@ -17,6 +17,8 @@ class AppController: NSObject {
     var imageService: ImageServiceProtocol?
     var wallpaperManager: WallpaperManagerProtocol?
     
+    let preferencesController: PreferencesController = PreferencesController()
+    
     // MARK: Setup
     
     override func awakeFromNib() {
@@ -66,8 +68,7 @@ class AppController: NSObject {
     }
     
     @IBAction func preferencesButtonClicked(sender: NSMenuItem) {
-        // TODO: ADD PREFERENCES
-//        preferencesWindow.showWindow(nil)
+        preferencesController.showWindow(self);
     }
     
     @IBAction func quitButtonClicked(sender: AnyObject) {
