@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum WallpaperManagerError: ErrorType {
+    case NoScreensAvailableError
+}
+
 protocol WallpaperManagerProtocol {
-    func setWallpaper(path: NSURL, completionHandler: Result<Bool> -> Void)
+    func setWallpaper(path: NSURL, completionHandler: Result<Bool, ErrorType> -> Void)
 }

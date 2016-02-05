@@ -21,10 +21,12 @@ class AppController: NSObject {
     
     override func awakeFromNib() {
         setupStatusIcon()
+        // TODO: INJECT SERVICES INSTEAD OF CREATING THEM HERE
         self.imageService = EarthImageService();
         self.wallpaperManager = WallpaperManager();
     }
     
+    // TODO: INJECT SERVICES
     func setDependencies(imageService: ImageServiceProtocol, wallpaperManager: WallpaperManagerProtocol) {
         self.imageService = imageService
         self.wallpaperManager = wallpaperManager
@@ -43,7 +45,7 @@ class AppController: NSObject {
     @IBAction func updateWallpaperButtonClicked(sender: NSMenuItem) {
         guard let imageService = self.imageService else {
             // TODO: THROW ERROR MESSAGE (alert or something)
-            print("dependency missing")
+            print("missing dependencies")
             return
         }
 
@@ -51,8 +53,7 @@ class AppController: NSObject {
             switch result {
             case .Success(let url):
                 print("filename \(url)")
-                self.wallpaperManager!.setWallpaper(url, completionHandler: {
-                    (result: Result<Bool>) -> Void in
+                self.wallpaperManager!.setWallpaper(url, completionHandler: { result in
                     switch result {
                     case .Success(let success):
                         // TODO: Display success notification
@@ -69,6 +70,7 @@ class AppController: NSObject {
     }
     
     @IBAction func preferencesButtonClicked(sender: NSMenuItem) {
+        // TODO: ADD PREFERENCES
 //        preferencesWindow.showWindow(nil)
     }
     

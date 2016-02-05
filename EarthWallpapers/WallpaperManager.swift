@@ -9,18 +9,26 @@
 import Foundation
 import AppKit
 
-class WallpaperManager: WallpaperManagerProtocol {
+struct WallpaperManager: WallpaperManagerProtocol {
     
-    func setWallpaper(path: NSURL, completionHandler: Result<Bool> -> Void) {
+    internal func setWallpaper(path: NSURL, completionHandler: Result<Bool, ErrorType> -> Void) {
         let workspace = NSWorkspace.sharedWorkspace()
-        for screen in NSScreen.screens()! {
+        guard let screens = NSScreen.screens() else {
+            completionHandler(Result.Error(WallpaperManagerError.NoScreensAvailableError))
+            return
+        }
+        
+        screens.map({
+            screen in
             do {
                 try workspace.setDesktopImageURL(path, forScreen: screen, options: workspace.desktopImageOptionsForScreen(screen)!)
             } catch {
-                print("error setting the screen")
+                completionHandler(Result.Error(error))
+                return
             }
-        }
+        })
         
+        completionHandler(Result.Success(true))
     }
 
 }

@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum ImageServiceError: ErrorType {
+    case GenericError
+}
+
 protocol ImageServiceProtocol {
-    func getImage(completionHandler: Result<NSURL> -> Void);
+    func getImage(completionHandler: Result<NSURL, ImageServiceError> -> Void);
 }

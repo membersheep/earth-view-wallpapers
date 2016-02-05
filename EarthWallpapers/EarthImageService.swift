@@ -10,16 +10,12 @@ import Foundation
 import Alamofire
 import HTMLReader
 
-enum EarthImageServiceError: ErrorType {
-    case GenericError
-}
-
 class EarthImageService: ImageServiceProtocol {
     
     private let EARTHVIEW_URL = "https://earthview.withgoogle.com/"
     private let BACKGROUND_CLASS_NAME = "background"
     
-    func getImage(completionHandler: Result<NSURL> -> Void) {
+    func getImage(completionHandler: Result<NSURL, ImageServiceError> -> Void) {
         self.downloadHTMLPage({result in
             switch result {
             case .Success(let document):
@@ -44,15 +40,15 @@ class EarthImageService: ImageServiceProtocol {
         })
     }
     
-    func downloadHTMLPage(completionHandler: Result<HTMLDocument> -> Void) {
+    func downloadHTMLPage(completionHandler: Result<HTMLDocument, ErrorType> -> Void) {
         Alamofire.request(.GET, EARTHVIEW_URL)
             .responseString { responseString in
                 guard responseString.result.error == nil else {
-                    completionHandler(Result.Error(EarthImageServiceError.GenericError))
+                    completionHandler(Result.Error(ImageServiceError.GenericError))
                     return
                 }
                 guard let htmlAsString = responseString.result.value else {
-                    completionHandler(Result.Error(EarthImageServiceError.GenericError))
+                    completionHandler(Result.Error(ImageServiceError.GenericError))
                     return
                 }
                 
@@ -62,21 +58,21 @@ class EarthImageService: ImageServiceProtocol {
         }
     }
     
-    func getImageUrlfromHTML(document:HTMLDocument, completionHandler: Result<URLStringConvertible> -> Void) {
+    func getImageUrlfromHTML(document:HTMLDocument, completionHandler: Result<URLStringConvertible, ErrorType> -> Void) {
         let divs = document.nodesMatchingSelector("div");
         
         let backgroundDiv = divs.filter({ div in div.hasClass("background") }).first as? HTMLElement
         
         guard let div = backgroundDiv else {
-            completionHandler(Result.Error(EarthImageServiceError.GenericError))
+            completionHandler(Result.Error(ImageServiceError.GenericError))
             return
         }
         guard let styleAttributeValue = div.objectForKeyedSubscript("style") else {
-            completionHandler(Result.Error(EarthImageServiceError.GenericError))
+            completionHandler(Result.Error(ImageServiceError.GenericError))
             return
         }
         guard let fullUrlString: String = styleAttributeValue as? String else {
-            completionHandler(Result.Error(EarthImageServiceError.GenericError))
+            completionHandler(Result.Error(ImageServiceError.GenericError))
             return
         }
         
@@ -85,7 +81,7 @@ class EarthImageService: ImageServiceProtocol {
         completionHandler(Result.Success(urlString))
     }
     
-    func downloadImage(imgURL: URLStringConvertible, completionHandler: Result<NSURL> -> Void) {
+    func downloadImage(imgURL: URLStringConvertible, completionHandler: Result<NSURL, ErrorType> -> Void) {
         print("Downloading \(imgURL)")
         
         Alamofire.download(.GET, imgURL) { temporaryURL, response in
@@ -95,12 +91,8 @@ class EarthImageService: ImageServiceProtocol {
             
             return directoryURL.URLByAppendingPathComponent(pathComponent!)
         }.progress { bytesRead, totalBytesRead, totalBytesExpectedToRead in
-                print(totalBytesRead)
-                
-                // This closure is NOT called on the main queue for performance
-                // reasons. To update your ui, dispatch to the main queue.
                 dispatch_async(dispatch_get_main_queue()) {
-                    print("Total bytes read on main queue: \(totalBytesRead)")
+                    print("Total bytes read on main queue: \(totalBytesRead/totalBytesExpectedToRead*100)")
                 }
         }.response { _, response, _, error in
                 if let error = error {
