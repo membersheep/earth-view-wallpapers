@@ -8,10 +8,6 @@
 - Instant wallpaper change button.
 
 ## Future development
-- Test everything (maybe some refactoring needed)
-- Additional image sources (like http://apod.nasa.gov/)
+- Test everything (refactoring needed)
 - Add custom download destination folder in preferences
 - Add screenshots and a better readme
-
-## TODO
-- Add about window
