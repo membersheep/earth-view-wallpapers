@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="startupCheckBox" destination="99t-Ld-dgQ" id="dcY-AY-CXI"/>
                 <outlet property="timeComboBox" destination="R7n-cT-OCL" id="xWC-L0-Qun"/>
+                <outlet property="window" destination="zmC-Vz-qsz" id="iVI-fm-rCZ"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -77,6 +78,9 @@
                     <constraint firstItem="99t-Ld-dgQ" firstAttribute="leading" secondItem="JTM-P7-9CJ" secondAttribute="trailing" constant="95" id="yfb-aU-ERR"/>
                 </constraints>
             </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="nVU-0e-LYW"/>
+            </connections>
             <point key="canvasLocation" x="421" y="242"/>
         </window>
     </objects>
