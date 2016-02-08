@@ -27,10 +27,11 @@ class AppController: NSObject {
         imageService = EarthImageService()
         wallpaperManager = WallpaperManager()
         timer = TimerService()
-        
+
         let savedTimeInterval = NSUserDefaults.standardUserDefaults().doubleForKey("savedTimeInterval")
         let timeInterval = savedTimeInterval > 0 ? savedTimeInterval : 3600
-        NSUserDefaults.standardUserDefaults().setDouble(timeInterval, forKey: "savedTimeInterval")
+        
+        NSUserDefaults.standardUserDefaults().setDouble(3600.0, forKey: "savedTimeInterval")
         NSUserDefaults.standardUserDefaults().synchronize()
         
         let lastTriggerDate = NSUserDefaults.standardUserDefaults().objectForKey("lastTriggerDate") as? NSDate ?? NSDate()

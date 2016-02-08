@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TimerService: TimerProtocol {
+class TimerService: NSObject, TimerProtocol {
     
     private var timer: NSTimer?
     private var triggeredClosure:(Void)->Void = {}
@@ -17,10 +17,11 @@ class TimerService: TimerProtocol {
         self.triggeredClosure = triggerFunction
         let fireDate = NSDate(timeInterval: interval, sinceDate: lastTriggerDate)
         
-        timer = NSTimer(fireDate: fireDate, interval: interval, target: self, selector: "trigger", userInfo: nil, repeats: true)
+        timer = NSTimer(fireDate: fireDate, interval: interval, target: self, selector: Selector("trigger"), userInfo: nil, repeats: true)
+        NSRunLoop.currentRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
     }
     
-    private func trigger() {
+    func trigger() {
         triggeredClosure();
     }
 
