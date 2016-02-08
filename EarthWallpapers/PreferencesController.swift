@@ -23,6 +23,8 @@ class PreferencesController: NSWindowController, NSWindowDelegate, NSComboBoxDel
     @IBOutlet weak var startupCheckBox: NSButton!
     @IBOutlet weak var timeComboBox: NSComboBox!
     
+    let startupService: StartupService = StartupServiceImpl()
+    
     override var windowNibName : String! {
         return "PreferencesWindow"
     }
@@ -39,20 +41,15 @@ class PreferencesController: NSWindowController, NSWindowDelegate, NSComboBoxDel
     
     private func loadPreferences() {
         let timeIntervalString = NSUserDefaults.standardUserDefaults().stringForKey(TIME_KEY) ?? TimeInterval.Hour.rawValue
-        let startupActive = NSUserDefaults.standardUserDefaults().boolForKey(STARTUP_KEY)
 
-        self.startupCheckBox.state = startupActive ? NSOnState : NSOffState
+        self.startupCheckBox.state = startupService.applicationIsInStartUpItems() ? NSOnState : NSOffState
         self.timeComboBox.selectItemWithObjectValue(timeIntervalString)
     }
     
     // MARK: NSButton action
     
     @IBAction func checkBoxClicked(sender: NSButton) {
-        if sender.state == NSOnState {
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: STARTUP_KEY)
-        } else {
-            NSUserDefaults.standardUserDefaults().setBool(false, forKey: STARTUP_KEY)
-        }
+        startupService.toggleLaunchAtStartup()
     }
     
     // MARK: NSComboBoxDelegate

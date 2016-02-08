@@ -31,6 +31,7 @@ class AppController: NSObject {
         let savedTimeInterval = NSUserDefaults.standardUserDefaults().doubleForKey("savedTimeInterval")
         let timeInterval = savedTimeInterval > 0 ? savedTimeInterval : 3600
         NSUserDefaults.standardUserDefaults().setDouble(timeInterval, forKey: "savedTimeInterval")
+        NSUserDefaults.standardUserDefaults().synchronize()
         
         let lastTriggerDate = NSUserDefaults.standardUserDefaults().objectForKey("lastTriggerDate") as? NSDate ?? NSDate()
         
@@ -72,6 +73,7 @@ class AppController: NSObject {
                     switch result {
                     case .Success(_):
                         NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "lastTriggerDate")
+                        NSUserDefaults.standardUserDefaults().synchronize()
                         break
                     case .Error(let error):
                         self.showAlert("\(error)")
