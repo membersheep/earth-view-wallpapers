@@ -6,7 +6,9 @@
 - Starts at startup (option in preferences).
 - Changes wallpaper automatically every hour, day, week (option in preferences).
 - Instant wallpaper change button.
+
 ![app_icon](https://raw.githubusercontent.com/membersheep/earth-view-wallpapers/master/screen.png)
+
 ## Future development
 - Test everything (refactoring needed)
 - Add custom download destination folder in preferences
