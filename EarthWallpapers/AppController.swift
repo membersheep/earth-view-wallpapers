@@ -18,6 +18,7 @@ class AppController: NSObject {
     var wallpaperManager: WallpaperManagerProtocol?
     var timer: TimerProtocol?
     let preferencesController: PreferencesController = PreferencesController()
+    let aboutController: AboutController = AboutController()
     
     // MARK: Setup
     
@@ -31,7 +32,7 @@ class AppController: NSObject {
         let savedTimeInterval = NSUserDefaults.standardUserDefaults().doubleForKey("savedTimeInterval")
         let timeInterval = savedTimeInterval > 0 ? savedTimeInterval : 3600
         
-        NSUserDefaults.standardUserDefaults().setDouble(3600.0, forKey: "savedTimeInterval")
+        NSUserDefaults.standardUserDefaults().setDouble(timeInterval, forKey: "savedTimeInterval")
         NSUserDefaults.standardUserDefaults().synchronize()
         
         let lastTriggerDate = NSUserDefaults.standardUserDefaults().objectForKey("lastTriggerDate") as? NSDate ?? NSDate()
@@ -88,6 +89,10 @@ class AppController: NSObject {
     
     @IBAction func preferencesButtonClicked(sender: NSMenuItem) {
         preferencesController.showWindow(self);
+    }
+    
+    @IBAction func aboutButtonClicked(sender: NSMenuItem) {
+        aboutController.showWindow(self);
     }
     
     @IBAction func quitButtonClicked(sender: AnyObject) {

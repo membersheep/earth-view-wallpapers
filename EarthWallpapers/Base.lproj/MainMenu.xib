@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -20,10 +20,16 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="DiI-mu-Anh">
             <items>
-                <menuItem title="Update wallpaper" id="4vY-eN-zeg" userLabel="Update wallpaper">
+                <menuItem title="About" id="4vY-eN-zeg">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="updateWallpaperButtonClicked:" target="Ocd-cS-Qld" id="DkB-9e-VPR"/>
+                        <action selector="aboutButtonClicked:" target="Ocd-cS-Qld" id="sw1-WY-sux"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Update wallpaper" id="fdv-pw-Sgk" userLabel="Update wallpaper">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="updateWallpaperButtonClicked:" target="Ocd-cS-Qld" id="SId-H5-vQx"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Preferences..." id="Kc1-rh-X9f" userLabel="Preferences...">
