@@ -34,8 +34,8 @@
 		1B6DA8BD1C64B61A008C35FA /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B6DA8BB1C64B619008C35FA /* PreferencesWindow.xib */; };
 		1B6DA8BF1C64B957008C35FA /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6DA8BE1C64B957008C35FA /* PreferencesController.swift */; };
 		1B6DA8C01C64B957008C35FA /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6DA8BE1C64B957008C35FA /* PreferencesController.swift */; };
-		1BDA4EE61C6B87A50019041B /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDA4EE51C6B87A50019041B /* UserDefaultsManager.swift */; };
-		1BDA4EE71C6B87A50019041B /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDA4EE51C6B87A50019041B /* UserDefaultsManager.swift */; };
+		1BDA4EE61C6B87A50019041B /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDA4EE51C6B87A50019041B /* UserDefaultsStore.swift */; };
+		1BDA4EE71C6B87A50019041B /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDA4EE51C6B87A50019041B /* UserDefaultsStore.swift */; };
 		1BDA4EEE1C6DF33F0019041B /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDA4EED1C6DF33F0019041B /* TimerService.swift */; };
 		1BDA4EEF1C6DF33F0019041B /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDA4EED1C6DF33F0019041B /* TimerService.swift */; };
 		1BDA4F031C6E24390019041B /* StatusMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BDA4F021C6E24390019041B /* StatusMenu.xib */; };
@@ -76,7 +76,7 @@
 		1B4F792A1C69EB770062EC15 /* WallpaperService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperService.swift; sourceTree = "<group>"; };
 		1B6DA8BB1C64B619008C35FA /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 		1B6DA8BE1C64B957008C35FA /* PreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
-		1BDA4EE51C6B87A50019041B /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		1BDA4EE51C6B87A50019041B /* UserDefaultsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsStore.swift; sourceTree = "<group>"; };
 		1BDA4EED1C6DF33F0019041B /* TimerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
 		1BDA4F021C6E24390019041B /* StatusMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusMenu.xib; sourceTree = "<group>"; };
 		6236DA0AF5CD157F52A20DC0 /* Pods-EarthWallpapers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarthWallpapers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarthWallpapers/Pods-EarthWallpapers.debug.xcconfig"; sourceTree = "<group>"; };
@@ -190,8 +190,8 @@
 				1B273D1F1C6364EE00F72CDE /* EarthImageService.swift */,
 				1B4F792A1C69EB770062EC15 /* WallpaperService.swift */,
 				1B36FFCC1C68988D00596020 /* StartupService.swift */,
-				1BDA4EE51C6B87A50019041B /* UserDefaultsManager.swift */,
 				1BDA4EED1C6DF33F0019041B /* TimerService.swift */,
+				1BDA4EE51C6B87A50019041B /* UserDefaultsStore.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -428,7 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B4F79281C68F79F0062EC15 /* PreferencesManager.swift in Sources */,
-				1BDA4EE61C6B87A50019041B /* UserDefaultsManager.swift in Sources */,
+				1BDA4EE61C6B87A50019041B /* UserDefaultsStore.swift in Sources */,
 				1B273D231C63650000F72CDE /* WallpaperManager.swift in Sources */,
 				1B273D1B1C635D4300F72CDE /* Result.swift in Sources */,
 				1BDA4EEE1C6DF33F0019041B /* TimerService.swift in Sources */,
@@ -448,7 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B4F79291C68F79F0062EC15 /* PreferencesManager.swift in Sources */,
-				1BDA4EE71C6B87A50019041B /* UserDefaultsManager.swift in Sources */,
+				1BDA4EE71C6B87A50019041B /* UserDefaultsStore.swift in Sources */,
 				1B273D241C63650000F72CDE /* WallpaperManager.swift in Sources */,
 				1B273D1C1C635D4300F72CDE /* Result.swift in Sources */,
 				1BDA4EEF1C6DF33F0019041B /* TimerService.swift in Sources */,

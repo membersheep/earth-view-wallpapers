@@ -1,5 +1,5 @@
 //
-//  UserDefaultsManager.swift
+//  UserDefaultsStore.swift
 //  EarthWallpapers
 //
 //  Created by Alessandro Maroso on 10/02/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol UserDefaultsManager {
+protocol UserDefaultsStore {
     func setStartAtLogin(value: Bool)
     func getStartAtLogin() -> Bool
     func setUpdateInterval(value: Double)
@@ -17,7 +17,7 @@ protocol UserDefaultsManager {
     func getLastUpdateDate() -> NSDate?
 }
 
-struct UserDefaultsManagerImpl: UserDefaultsManager {
+struct UserDefaultsStoreImpl: UserDefaultsStore {
     
     private let STARTUP_DEFAULTS_KEY = "STARTUP_KEY"
     private let INTERVAL_DEFAULTS_KEY = "INTERVAL_DEFAULTS_KEY"

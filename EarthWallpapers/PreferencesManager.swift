@@ -28,11 +28,11 @@ enum TimeInterval: String {
 struct PreferencesManagerImpl: PreferencesManager {
     
     private var startupService: StartupService
-    private var userDefaultsManager: UserDefaultsManager
+    private var userDefaultsManager: UserDefaultsStore
     
     var delegate: PreferencesDelegate?
     
-    init(startupService: StartupService, userDefaultsManager: UserDefaultsManager) {
+    init(startupService: StartupService, userDefaultsManager: UserDefaultsStore) {
         self.startupService = startupService
         self.userDefaultsManager = userDefaultsManager
     }

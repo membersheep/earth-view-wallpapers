@@ -16,8 +16,6 @@ enum ImageServiceError: ErrorType {
     case EmptyResponseError
 }
 
-// TODO: Create struct for error which has a string for description. The enum should be called ImageServiceErrorType
-
 protocol ImageDownloadService {
     func getImage(completionHandler: Result<NSURL, ImageServiceError> -> Void);
 }

@@ -18,9 +18,9 @@ struct WallpaperManagerImpl: WallpaperManager, PreferencesDelegate {
     private var wallpaperService: WallpaperService
     private var downloadService: ImageDownloadService
     private var timer: Timer
-    private var userDefaultsManager: UserDefaultsManager
+    private var userDefaultsManager: UserDefaultsStore
     
-    init(wallpaperService: WallpaperService, downloadService: ImageDownloadService, timer: Timer, userDefaultsManager: UserDefaultsManager) {
+    init(wallpaperService: WallpaperService, downloadService: ImageDownloadService, timer: Timer, userDefaultsManager: UserDefaultsStore) {
         self.wallpaperService = wallpaperService
         self.downloadService = downloadService
         self.userDefaultsManager = userDefaultsManager

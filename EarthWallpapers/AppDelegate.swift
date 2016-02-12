@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let imageService: ImageDownloadService = EarthImageService()
         let startupService: StartupService = StartupServiceImpl()
         let timer: Timer = TimerService()
-        let defaultsManager: UserDefaultsManager = UserDefaultsManagerImpl()
+        let defaultsManager: UserDefaultsStore = UserDefaultsStoreImpl()
         
         let preferencesManager: PreferencesManager = PreferencesManagerImpl(startupService: startupService, userDefaultsManager: defaultsManager)
         let wallpaperManager = WallpaperManagerImpl(wallpaperService: wallpaperService, downloadService: imageService, timer: timer, userDefaultsManager: defaultsManager)
