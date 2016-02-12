@@ -8,6 +8,13 @@
 
 import Foundation
 
+protocol TimerProtocol {
+    func start(lastTriggerDate: NSDate, interval: NSTimeInterval, triggerFunction: Void -> Void)
+    func stop()
+}
+
+// TODO: lastupdatedate and interval must be changed without having to specify a new trigger function
+
 class TimerService: NSObject, TimerProtocol {
     
     private var timer: NSTimer?

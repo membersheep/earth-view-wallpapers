@@ -14,37 +14,16 @@ class AppController: NSObject {
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
     @IBOutlet weak var statusMenu: NSMenu!
     
-    var imageService: ImageServiceProtocol?
-    var wallpaperManager: WallpaperManagerProtocol?
-    var timer: TimerProtocol?
-    let preferencesController: PreferencesController = PreferencesController()
-    let aboutController: AboutController = AboutController()
+    var wallpaperManager: WallpaperManager?
     
     // MARK: Setup
     
     override func awakeFromNib() {
         setupStatusIcon()
-        // TODO: INJECT SERVICES INSTEAD OF CREATING THEM HERE
-        imageService = EarthImageService()
-        wallpaperManager = WallpaperManager()
-        timer = TimerService()
-
-        let savedTimeInterval = NSUserDefaults.standardUserDefaults().doubleForKey("savedTimeInterval")
-        let timeInterval = savedTimeInterval > 0 ? savedTimeInterval : 3600
-        
-        NSUserDefaults.standardUserDefaults().setDouble(timeInterval, forKey: "savedTimeInterval")
-        NSUserDefaults.standardUserDefaults().synchronize()
-        
-        let lastTriggerDate = NSUserDefaults.standardUserDefaults().objectForKey("lastTriggerDate") as? NSDate ?? NSDate()
-        
-        timer?.start(lastTriggerDate, interval: savedTimeInterval, triggerFunction: {
-            self.updateWallpaper()
-        })
     }
     
-    func setDependencies(imageService: ImageServiceProtocol, wallpaperManager: WallpaperManagerProtocol) {
-        self.imageService = imageService
-        self.wallpaperManager = wallpaperManager
+    init(manager: WallpaperManager) {
+        self.wallpaperManager = manager;
     }
     
     func setupStatusIcon() {
@@ -62,37 +41,29 @@ class AppController: NSObject {
     }
     
     private func updateWallpaper() {
-        guard let imageService = self.imageService, let wallpaperManager = self.wallpaperManager else {
+        guard let wallpaperManager = self.wallpaperManager else {
             showAlert("missing dependencies")
             return
         }
-        
-        imageService.getImage({ result in
-            switch result {
-            case .Success(let url):
-                wallpaperManager.setWallpaper(url, completionHandler: {
-                    result in
-                    switch result {
-                    case .Success(_):
-                        NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "lastTriggerDate")
-                        NSUserDefaults.standardUserDefaults().synchronize()
-                        break
-                    case .Error(let error):
-                        self.showAlert("\(error)")
-                    }
-                })
+        wallpaperManager.changeWallpaper({
+            result in
+            switch(result){
+            case .Success:
+                break
             case .Error(let error):
                 self.showAlert("\(error)")
+                break
             }
         })
     }
     
+    // TODO: To be implemented
     @IBAction func preferencesButtonClicked(sender: NSMenuItem) {
-        preferencesController.showWindow(self);
+        
     }
     
+    // TODO: To be implemented
     @IBAction func aboutButtonClicked(sender: NSMenuItem) {
-        aboutController.showWindow(self);
     }
     
     @IBAction func quitButtonClicked(sender: AnyObject) {

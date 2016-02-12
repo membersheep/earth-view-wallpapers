@@ -12,6 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Init controller with dependencies and view
+        print("1")
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

@@ -9,26 +9,42 @@
 import Foundation
 import AppKit
 
-struct WallpaperManager: WallpaperManagerProtocol {
+protocol WallpaperManager {
+    func changeWallpaper(completionHandler: Result<Bool, ErrorType> -> Void)
+}
+
+enum WallpaperManagerError: ErrorType {
+    case NoScreensAvailableError
+}
+
+struct WallpaperManagerImpl: WallpaperManager {
     
-    internal func setWallpaper(path: NSURL, completionHandler: Result<Bool, ErrorType> -> Void) {
-        let workspace = NSWorkspace.sharedWorkspace()
-        guard let screens = NSScreen.screens() else {
-            completionHandler(Result.Error(WallpaperManagerError.NoScreensAvailableError))
-            return
-        }
-        
-        _ = screens.map({
-            screen in
-            do {
-                try workspace.setDesktopImageURL(path, forScreen: screen, options: workspace.desktopImageOptionsForScreen(screen)!)
-            } catch {
+    private var wallpaperService: WallpaperService
+    private var downloadService: ImageDownloadService
+    
+    init(wallpaperService: WallpaperService, downloadService: ImageDownloadService) {
+        self.wallpaperService = wallpaperService
+        self.downloadService = downloadService
+    }
+    
+    func changeWallpaper(completionHandler: Result<Bool, ErrorType> -> Void) {
+        downloadService.getImage({
+            result in
+            switch result {
+                case .Success(let imageUrl):
+                    self.wallpaperService.setWallpaperImageURL(imageUrl, completionHandler: {
+                        result in
+                        switch result {
+                        case .Success(let success):
+                            completionHandler(Result.Success(success))
+                        case .Error(let error):
+                            completionHandler(Result.Error(error))
+                        }
+                    })
+                case .Error(let error):
                 completionHandler(Result.Error(error))
-                return
             }
         })
-        
-        completionHandler(Result.Success(true))
     }
 
 }

@@ -10,43 +10,46 @@ import Foundation
 import Alamofire
 import HTMLReader
 
-struct EarthImageService: ImageServiceProtocol {
+struct EarthImageService: ImageDownloadService {
     
     private let EARTHVIEW_URL = "https://earthview.withgoogle.com/"
     private let BACKGROUND_CLASS_NAME = "background"
     private let BACKGROUND_ATTRIBUTE_NAME = "style"
     
     internal func getImage(completionHandler: Result<NSURL, ImageServiceError> -> Void) {
-        self.downloadHTMLPage({result in
+        self.downloadHTMLPage({
+            result in
             switch result {
             case .Success(let document):
-                self.getImageUrlfromHTML(document, completionHandler: {result in
+                self.getImageUrlfromHTML(document, completionHandler: {
+                    result in
                     switch result {
                     case .Success(let urlString):
-                        self.downloadImage(urlString, completionHandler: {result in
+                        self.downloadImage(urlString, completionHandler: {
+                            result in
                             switch result {
                             case .Success(let fileName):
                                 completionHandler(Result.Success(fileName))
                             case .Error(let error):
-                                print(error)
+                                completionHandler(Result.Error(error))
                             }
                         })
                     case .Error(let error):
-                        print(error)
+                        completionHandler(Result.Error(error))
                     }
                 })
             case .Error(let error):
-                print(error)
+                completionHandler(Result.Error(error))
             }
         })
     }
     
-    private func downloadHTMLPage(completionHandler: Result<HTMLDocument, ErrorType> -> Void) {
+    private func downloadHTMLPage(completionHandler: Result<HTMLDocument, ImageServiceError> -> Void) {
         Alamofire.request(.GET, EARTHVIEW_URL)
             .responseString {
                 response in
-                guard response.result.error == nil else {
-                    completionHandler(Result.Error(response.result.error!))
+                if let error = response.result.error {
+                    completionHandler(Result.Error(ImageServiceError.HTMLDownloadError(description: error.localizedDescription)))
                     return
                 }
                 guard let htmlAsString = response.result.value else {
@@ -60,21 +63,21 @@ struct EarthImageService: ImageServiceProtocol {
         }
     }
     
-    private func getImageUrlfromHTML(document:HTMLDocument, completionHandler: Result<URLStringConvertible, ErrorType> -> Void) {
+    private func getImageUrlfromHTML(document:HTMLDocument, completionHandler: Result<URLStringConvertible, ImageServiceError> -> Void) {
         let divs = document.nodesMatchingSelector("div");
         
         let backgroundDiv = divs.filter({ div in div.hasClass(BACKGROUND_CLASS_NAME) }).first as? HTMLElement
         
         guard let div = backgroundDiv else {
-            completionHandler(Result.Error(ImageServiceError.ParsingError))
+            completionHandler(Result.Error(ImageServiceError.ParserError))
             return
         }
         guard let styleAttributeValue = div.objectForKeyedSubscript(BACKGROUND_ATTRIBUTE_NAME) else {
-            completionHandler(Result.Error(ImageServiceError.ParsingError))
+            completionHandler(Result.Error(ImageServiceError.ParserError))
             return
         }
         guard let fullUrlString: String = styleAttributeValue as? String else {
-            completionHandler(Result.Error(ImageServiceError.ParsingError))
+            completionHandler(Result.Error(ImageServiceError.ParserError))
             return
         }
         
@@ -83,21 +86,22 @@ struct EarthImageService: ImageServiceProtocol {
         completionHandler(Result.Success(urlString))
     }
     
-    private func downloadImage(imgURL: URLStringConvertible, completionHandler: Result<NSURL, ErrorType> -> Void) {       
-        Alamofire.download(.GET, imgURL) { temporaryURL, response in
+    private func downloadImage(imgURL: URLStringConvertible, completionHandler: Result<NSURL, ImageServiceError> -> Void) {
+        Alamofire.download(.GET, imgURL) {
+            temporaryURL, response in
             let fileManager = NSFileManager.defaultManager()
             let directoryURL = fileManager.URLsForDirectory(.PicturesDirectory, inDomains: .UserDomainMask)[0]
             let pathComponent = response.suggestedFilename
-            
             return directoryURL.URLByAppendingPathComponent(pathComponent!)
-        }.response { _, response, _, error in
-                if let error = error {
-                    completionHandler(Result.Error(error))
-                } else {
-                    let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.PicturesDirectory, inDomains: .UserDomainMask)[0]
-                    directoryURL.URLByAppendingPathComponent(response!.suggestedFilename!)
-                    completionHandler(Result.Success(directoryURL.URLByAppendingPathComponent(response!.suggestedFilename!)));
-                }
+        }.response {
+            _, response, _, error in
+            if let error = error {
+                completionHandler(Result.Error(ImageServiceError.ImageDownloadError(description: error.localizedDescription)))
+            } else {
+                let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.PicturesDirectory, inDomains: .UserDomainMask)[0]
+                directoryURL.URLByAppendingPathComponent(response!.suggestedFilename!)
+                completionHandler(Result.Success(directoryURL.URLByAppendingPathComponent(response!.suggestedFilename!)));
+            }
         }
     }
 }

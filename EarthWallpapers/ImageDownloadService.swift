@@ -10,10 +10,14 @@ import Foundation
 
 enum ImageServiceError: ErrorType {
     case GenericError
+    case ImageDownloadError(description: String)
+    case ParserError
+    case HTMLDownloadError(description: String)
     case EmptyResponseError
-    case ParsingError
 }
 
-protocol ImageServiceProtocol {
+// TODO: Create struct for error which has a string for description. The enum should be called ImageServiceErrorType
+
+protocol ImageDownloadService {
     func getImage(completionHandler: Result<NSURL, ImageServiceError> -> Void);
 }

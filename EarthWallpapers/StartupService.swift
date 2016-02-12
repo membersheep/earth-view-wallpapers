@@ -10,15 +10,53 @@ import Cocoa
 
 protocol StartupService {
     func applicationIsInStartUpItems() -> Bool
+    func addApplicationToStartupItems()
+    func removeApplicationFromStartupItems()
     func toggleLaunchAtStartup()
 }
 
-class StartupServiceImpl: StartupService {
+struct StartupServiceImpl: StartupService {
+    
     func applicationIsInStartUpItems() -> Bool {
         return (getItemReferencesInLoginItems().existingReference != nil)
     }
     
-    func getItemReferencesInLoginItems() -> (existingReference: LSSharedFileListItemRef?, lastReference: LSSharedFileListItemRef?) {
+    func addApplicationToStartupItems() {
+        let itemReferences = getItemReferencesInLoginItems()
+        let shouldBeToggled = (itemReferences.existingReference == nil)
+        let loginItemsRef = LSSharedFileListCreate(
+            nil,
+            kLSSharedFileListSessionLoginItems.takeRetainedValue(),
+            nil
+            ).takeRetainedValue() as LSSharedFileListRef?
+        if loginItemsRef != nil {
+            if shouldBeToggled {
+                if let appUrl : CFURLRef = NSURL.fileURLWithPath(NSBundle.mainBundle().bundlePath) {
+                    LSSharedFileListInsertItemURL(
+                        loginItemsRef,
+                        itemReferences.lastReference,
+                        nil,
+                        nil,
+                        appUrl,
+                        nil,
+                        nil
+                    )
+                    print("Application was added to login items")
+                }
+            } else {
+                if let itemRef = itemReferences.existingReference {
+                    LSSharedFileListItemRemove(loginItemsRef,itemRef);
+                    print("Application was removed from login items")
+                }
+            }
+        }
+    }
+    
+    func removeApplicationFromStartupItems() {
+        
+    }
+    
+    private func getItemReferencesInLoginItems() -> (existingReference: LSSharedFileListItemRef?, lastReference: LSSharedFileListItemRef?) {
         let itemUrl : UnsafeMutablePointer<Unmanaged<CFURL>?> = UnsafeMutablePointer<Unmanaged<CFURL>?>.alloc(1)
         if let appUrl : NSURL = NSURL.fileURLWithPath(NSBundle.mainBundle().bundlePath) {
             let loginItemsRef = LSSharedFileListCreate(
