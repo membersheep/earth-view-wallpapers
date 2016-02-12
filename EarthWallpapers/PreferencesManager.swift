@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Preferences {
+protocol PreferencesManager {
     func getStartAtLogin() -> Bool
     func setStartAtLogin(value: Bool)
     func getUpdateInterval() -> TimeInterval
@@ -25,7 +25,7 @@ enum TimeInterval: String {
     case Week = "Week"
 }
 
-struct PreferencesManager: Preferences {
+struct PreferencesManagerImpl: PreferencesManager {
     
     private var startupService: StartupService
     private var userDefaultsManager: UserDefaultsManager

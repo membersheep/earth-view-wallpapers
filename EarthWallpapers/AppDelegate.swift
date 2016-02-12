@@ -27,11 +27,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let timer: Timer = TimerService()
         let defaultsManager: UserDefaultsManager = UserDefaultsManagerImpl()
         
-        let preferencesManager: Preferences = PreferencesManager(startupService: startupService, userDefaultsManager: defaultsManager)
+        let preferencesManager: PreferencesManager = PreferencesManagerImpl(startupService: startupService, userDefaultsManager: defaultsManager)
         let wallpaperManager = WallpaperManagerImpl(wallpaperService: wallpaperService, downloadService: imageService, timer: timer, userDefaultsManager: defaultsManager)
         
-        
         appController = AppController(manager: wallpaperManager)
+        appController?.preferencesTransitionClosure = {
+            self.preferencesController = PreferencesController(manager: preferencesManager)
+            self.preferencesController?.showWindow(self)
+        }
+        appController?.aboutTransitionClosure = {
+            self.aboutController = AboutController()
+            self.aboutController?.showWindow(self)
+        }
+        
         appController?.showWindow(self)
     }
 

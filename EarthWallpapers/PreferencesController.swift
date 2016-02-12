@@ -11,27 +11,20 @@ import Cocoa
 
 class PreferencesController: NSWindowController, NSWindowDelegate, NSComboBoxDelegate {
     
-    var preferencesManager: PreferencesManager
+    var preferencesManager: PreferencesManager?
     
     @IBOutlet weak var startupCheckBox: NSButton!
     @IBOutlet weak var timeComboBox: NSComboBox!
     
-    init(window: NSWindow?, manager: PreferencesManager) {
+    convenience init(manager: PreferencesManager) {
+        self.init()
         self.preferencesManager = manager;
-        super.init(window: window)
     }
     
-    // TODO:
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // TODO:
     override var windowNibName : String! {
         return "PreferencesWindow"
     }
     
-    // TODO:
     override func windowDidLoad() {
         super.windowDidLoad()
         
@@ -43,15 +36,18 @@ class PreferencesController: NSWindowController, NSWindowDelegate, NSComboBoxDel
     }
     
     private func loadPreferences() {
-        self.timeComboBox.selectItemWithObjectValue(preferencesManager.getUpdateInterval().rawValue)
-        self.startupCheckBox.state = preferencesManager.getStartAtLogin() ? NSOnState : NSOffState
+        guard let prefs = preferencesManager else {
+            return
+        }
+        self.timeComboBox.selectItemWithObjectValue(prefs.getUpdateInterval().rawValue)
+        self.startupCheckBox.state = prefs.getStartAtLogin() ? NSOnState : NSOffState
     }
     
     // MARK: NSButton action
     
     @IBAction func checkBoxClicked(sender: NSButton) {
         let state: Bool = sender.state == NSOnState ? true : false
-        preferencesManager.setStartAtLogin(state)
+        preferencesManager?.setStartAtLogin(state)
     }
     
     // MARK: NSComboBoxDelegate
@@ -63,6 +59,6 @@ class PreferencesController: NSWindowController, NSWindowDelegate, NSComboBoxDel
         guard let timeInterval = TimeInterval(rawValue: selectedValue) else {
             return
         }
-        preferencesManager.setUpdateInterval(timeInterval)
+        preferencesManager?.setUpdateInterval(timeInterval)
     }
 }
