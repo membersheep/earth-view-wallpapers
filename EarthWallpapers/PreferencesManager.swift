@@ -15,6 +15,10 @@ protocol Preferences {
     mutating func setUpdateInterval(interval: TimeInterval)
 }
 
+protocol PreferencesDelegate {
+    func timeIntervalUpdated(interval: NSTimeInterval)
+}
+
 enum TimeInterval: String {
     case Hour = "Hour"
     case Day = "Day"
@@ -24,12 +28,12 @@ enum TimeInterval: String {
 struct PreferencesManager: Preferences {
     
     private var startupService: StartupService
-    private var timerService: TimerService
     private var userDefaultsManager: UserDefaultsManager
     
-    init(startupService: StartupService, timerService: TimerService, userDefaultsManager: UserDefaultsManager) {
+    var delegate: PreferencesDelegate?
+    
+    init(startupService: StartupService, userDefaultsManager: UserDefaultsManager) {
         self.startupService = startupService
-        self.timerService = timerService
         self.userDefaultsManager = userDefaultsManager
     }
     
@@ -73,10 +77,6 @@ struct PreferencesManager: Preferences {
         }
         userDefaultsManager.setUpdateInterval(intervalInSeconds)
         
-        guard let lastUpdateDate = userDefaultsManager.getLastUpdateDate() else {
-            return
-        }
-        // TODO: Set lastupdatedate and interval in timer
-        timerService.start(lastUpdateDate, interval: intervalInSeconds, triggerFunction: {})
+        delegate?.timeIntervalUpdated(intervalInSeconds)
     }
 }

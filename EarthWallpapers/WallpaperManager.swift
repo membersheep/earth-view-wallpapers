@@ -13,18 +13,18 @@ protocol WallpaperManager {
     func changeWallpaper(completionHandler: Result<Bool, ErrorType> -> Void)
 }
 
-enum WallpaperManagerError: ErrorType {
-    case NoScreensAvailableError
-}
-
-struct WallpaperManagerImpl: WallpaperManager {
+struct WallpaperManagerImpl: WallpaperManager, PreferencesDelegate {
     
     private var wallpaperService: WallpaperService
     private var downloadService: ImageDownloadService
+    private var timer: Timer
+    private var userDefaultsManager: UserDefaultsManager
     
-    init(wallpaperService: WallpaperService, downloadService: ImageDownloadService) {
+    init(wallpaperService: WallpaperService, downloadService: ImageDownloadService, timer: Timer, userDefaultsManager: UserDefaultsManager) {
         self.wallpaperService = wallpaperService
         self.downloadService = downloadService
+        self.userDefaultsManager = userDefaultsManager
+        self.timer = timer
     }
     
     func changeWallpaper(completionHandler: Result<Bool, ErrorType> -> Void) {
@@ -36,6 +36,7 @@ struct WallpaperManagerImpl: WallpaperManager {
                         result in
                         switch result {
                         case .Success(let success):
+                            // TODO: save last update date
                             completionHandler(Result.Success(success))
                         case .Error(let error):
                             completionHandler(Result.Error(error))
@@ -45,6 +46,27 @@ struct WallpaperManagerImpl: WallpaperManager {
                 completionHandler(Result.Error(error))
             }
         })
+    }
+    
+    func enableAutoWallpaperUpdate() {
+        let lastUpdateDate = userDefaultsManager.getLastUpdateDate()
+        let interval = userDefaultsManager.getUpdateInterval()
+        
+        timer.start(lastUpdateDate!, interval: interval, triggerFunction: {
+            self.changeWallpaper({_ in })
+        })
+    }
+    
+    func disableAutoWallpaperUpdate() {
+        timer.stop()
+    }
+    
+    // MARK: PreferencesDelegate
+    
+    func timeIntervalUpdated(interval: NSTimeInterval) {
+        disableAutoWallpaperUpdate()
+        userDefaultsManager.setLastUpdateDate(NSDate())
+        enableAutoWallpaperUpdate()
     }
 
 }
