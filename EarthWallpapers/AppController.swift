@@ -9,27 +9,41 @@
 import Foundation
 import Cocoa
 
-class AppController: NSObject {
+class AppController: NSWindowController {
+    
+    var wallpaperManager: WallpaperManager?
 
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
     @IBOutlet weak var statusMenu: NSMenu!
     
-    var wallpaperManager: WallpaperManager?
+    var aboutTransitionClosure:((Void) -> Void)?
+    var preferencesTransitionClosure:((Void) -> Void)?
     
     // MARK: Setup
     
-    override func awakeFromNib() {
-        setupStatusIcon()
+    convenience init(manager: WallpaperManager) {
+        self.init()
+        self.wallpaperManager = manager;
     }
     
-    init(manager: WallpaperManager) {
-        self.wallpaperManager = manager;
+    override var windowNibName : String! {
+        return "StatusMenu"
+    }
+    
+    override func windowDidLoad() {
+        super.windowDidLoad()
+        
+        self.window?.center()
+        self.window?.makeKeyAndOrderFront(nil)
+        NSApp.activateIgnoringOtherApps(true)
+        
+        setupStatusIcon()
     }
     
     func setupStatusIcon() {
         statusItem.menu = statusMenu
         let icon = NSImage(named: "StatusIcon")
-        icon?.template = true // best for dark mode
+        icon?.template = true
         statusItem.image = icon
         statusItem.menu = statusMenu
     }
@@ -39,6 +53,20 @@ class AppController: NSObject {
     @IBAction func updateWallpaperButtonClicked(sender: NSMenuItem) {
         updateWallpaper()
     }
+    
+    @IBAction func preferencesButtonClicked(sender: NSMenuItem) {
+        preferencesTransitionClosure?()
+    }
+    
+    @IBAction func aboutButtonClicked(sender: NSMenuItem) {
+        aboutTransitionClosure?()
+    }
+    
+    @IBAction func quitButtonClicked(sender: AnyObject) {
+        NSApplication.sharedApplication().terminate(self)
+    }
+    
+    // MARK: Reactions
     
     private func updateWallpaper() {
         guard let wallpaperManager = self.wallpaperManager else {
@@ -56,21 +84,6 @@ class AppController: NSObject {
             }
         })
     }
-    
-    // TODO: To be implemented
-    @IBAction func preferencesButtonClicked(sender: NSMenuItem) {
-        
-    }
-    
-    // TODO: To be implemented
-    @IBAction func aboutButtonClicked(sender: NSMenuItem) {
-    }
-    
-    @IBAction func quitButtonClicked(sender: AnyObject) {
-        NSApplication.sharedApplication().terminate(self)
-    }
-    
-    // MARK: Reactions
     
     private func showAlert(text: String) {
         let alert = NSAlert()

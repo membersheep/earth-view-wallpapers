@@ -4,44 +4,37 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+        <customObject id="-2" userLabel="File's Owner" customClass="AppController" customModule="EarthWallpapers" customModuleProvider="target">
             <connections>
-                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+                <outlet property="statusMenu" destination="h8Y-VB-2CI" id="gt2-D3-7kq"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="EarthWallpapers" customModuleProvider="target"/>
-        <customObject id="Ocd-cS-Qld" customClass="AppController" customModule="EarthWallpapers" customModuleProvider="target">
-            <connections>
-                <outlet property="statusMenu" destination="DiI-mu-Anh" id="ZMn-rK-o9a"/>
-            </connections>
-        </customObject>
-        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <menu id="DiI-mu-Anh">
+        <menu id="h8Y-VB-2CI" userLabel="StatusMenu">
             <items>
-                <menuItem title="About" id="4vY-eN-zeg">
+                <menuItem title="About" id="Gz5-wh-dkR">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="aboutButtonClicked:" target="Ocd-cS-Qld" id="sw1-WY-sux"/>
+                        <action selector="aboutButtonClicked:" target="-2" id="nYj-WK-Fbi"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Update wallpaper" id="fdv-pw-Sgk" userLabel="Update wallpaper">
+                <menuItem title="Update wallpaper" id="OIU-hR-kEo" userLabel="Update wallpaper">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="updateWallpaperButtonClicked:" target="Ocd-cS-Qld" id="SId-H5-vQx"/>
+                        <action selector="updateWallpaperButtonClicked:" target="-2" id="oxU-Xe-Veh"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Preferences..." id="Kc1-rh-X9f" userLabel="Preferences...">
+                <menuItem title="Preferences..." id="zmB-Cg-EuL" userLabel="Preferences...">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="preferencesButtonClicked:" target="Ocd-cS-Qld" id="pec-iU-znJ"/>
+                        <action selector="preferencesButtonClicked:" target="-2" id="JJU-58-dyd"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Quit" id="d1D-Wk-faf" userLabel="Quit">
+                <menuItem title="Quit" id="o7n-37-glf" userLabel="Quit">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="quitButtonClicked:" target="Ocd-cS-Qld" id="hUC-tD-K4y"/>
+                        <action selector="quitButtonClicked:" target="-2" id="obb-aF-fzS"/>
                     </connections>
                 </menuItem>
             </items>
