@@ -36,7 +36,7 @@ struct WallpaperManagerImpl: WallpaperManager, PreferencesDelegate {
                         result in
                         switch result {
                         case .Success(let success):
-                            // TODO: save last update date
+                            self.userDefaultsManager.setLastUpdateDate(NSDate())
                             completionHandler(Result.Success(success))
                         case .Error(let error):
                             completionHandler(Result.Error(error))
