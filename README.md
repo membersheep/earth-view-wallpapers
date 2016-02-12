@@ -10,6 +10,4 @@
 ![app_icon](https://raw.githubusercontent.com/membersheep/earth-view-wallpapers/master/screen.png)
 
 ## Future development
-- Test everything (refactoring needed)
 - Add custom download destination folder in preferences
-- Add screenshots and a better readme
