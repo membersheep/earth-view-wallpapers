@@ -25,6 +25,20 @@ class WallpaperManagerImpl: WallpaperManager, PreferencesDelegate {
         self.downloadService = downloadService
         self.userDefaultsManager = userDefaultsManager
         self.timer = timer
+        
+        if (isAutoUpdateActive()) {
+            enableAutoWallpaperUpdate()
+        }
+    }
+    
+    private func isAutoUpdateActive() -> Bool {
+        guard let _ = userDefaultsManager.getLastUpdateDate() else {
+            return false
+        }
+        if userDefaultsManager.getUpdateInterval() == 0.0 {
+            return false
+        }
+        return true
     }
     
     func changeWallpaper(completionHandler: Result<Bool, ErrorType> -> Void) {
