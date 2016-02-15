@@ -66,7 +66,9 @@ struct WallpaperManagerImpl: WallpaperManager, PreferencesDelegate {
     func timeIntervalUpdated(interval: NSTimeInterval) {
         disableAutoWallpaperUpdate()
         userDefaultsManager.setLastUpdateDate(NSDate())
-        enableAutoWallpaperUpdate()
+        if (interval > 0.0) {
+            enableAutoWallpaperUpdate()
+        }
     }
 
 }

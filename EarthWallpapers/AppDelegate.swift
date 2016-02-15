@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let defaultsManager: UserDefaultsStore = UserDefaultsStoreImpl()
         
         let preferencesManager: PreferencesManager = PreferencesManagerImpl(startupService: startupService, userDefaultsManager: defaultsManager)
-        let wallpaperManager = WallpaperManagerImpl(wallpaperService: wallpaperService, downloadService: imageService, timer: timer, userDefaultsManager: defaultsManager)
+        let wallpaperManager: WallpaperManager = WallpaperManagerImpl(wallpaperService: wallpaperService, downloadService: imageService, timer: timer, userDefaultsManager: defaultsManager)
         
         appController = AppController(manager: wallpaperManager)
         appController?.preferencesTransitionClosure = {
