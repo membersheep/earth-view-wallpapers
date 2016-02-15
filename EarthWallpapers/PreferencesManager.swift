@@ -12,7 +12,9 @@ protocol PreferencesManager {
     func getStartAtLogin() -> Bool
     func setStartAtLogin(value: Bool)
     func getUpdateInterval() -> TimeInterval
-    mutating func setUpdateInterval(interval: TimeInterval)
+    func setUpdateInterval(interval: TimeInterval)
+    
+    var delegate: PreferencesDelegate? {get set}
 }
 
 protocol PreferencesDelegate {
@@ -26,7 +28,7 @@ enum TimeInterval: String {
     case Week = "Week"
 }
 
-struct PreferencesManagerImpl: PreferencesManager {
+class PreferencesManagerImpl: PreferencesManager {
     
     private var startupService: StartupService
     private var userDefaultsManager: UserDefaultsStore
@@ -54,7 +56,7 @@ struct PreferencesManagerImpl: PreferencesManager {
         switch (userDefaultsManager.getUpdateInterval()) {
         case 0.0:
             return .Never
-        case 3600.0:
+        case 10.0:
             return .Hour
         case 3600.0 * 24:
             return .Day
@@ -65,14 +67,14 @@ struct PreferencesManagerImpl: PreferencesManager {
         }
     }
 
-    mutating func setUpdateInterval(interval: TimeInterval) {
+    func setUpdateInterval(interval: TimeInterval) {
         var intervalInSeconds: Double = 0;
         switch (interval) {
         case .Never:
             intervalInSeconds = 0.0
             break
         case .Hour:
-            intervalInSeconds = 3600.0
+            intervalInSeconds = 10.0
             break
         case .Day:
             intervalInSeconds = 3600.0 * 24

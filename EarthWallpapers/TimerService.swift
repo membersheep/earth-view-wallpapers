@@ -26,7 +26,7 @@ class TimerService: NSObject, Timer {
         NSRunLoop.currentRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
     }
     
-    private func trigger() {
+    func trigger() {
         triggeredClosure();
     }
     

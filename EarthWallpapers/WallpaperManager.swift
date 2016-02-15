@@ -13,7 +13,7 @@ protocol WallpaperManager {
     func changeWallpaper(completionHandler: Result<Bool, ErrorType> -> Void)
 }
 
-struct WallpaperManagerImpl: WallpaperManager, PreferencesDelegate {
+class WallpaperManagerImpl: WallpaperManager, PreferencesDelegate {
     
     private var wallpaperService: WallpaperService
     private var downloadService: ImageDownloadService
