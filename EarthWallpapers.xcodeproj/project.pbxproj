@@ -20,6 +20,8 @@
 		1B273D211C6364EE00F72CDE /* EarthImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D1F1C6364EE00F72CDE /* EarthImageService.swift */; };
 		1B273D231C63650000F72CDE /* WallpaperManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D221C63650000F72CDE /* WallpaperManager.swift */; };
 		1B273D241C63650000F72CDE /* WallpaperManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B273D221C63650000F72CDE /* WallpaperManager.swift */; };
+		1B2F0D2C1C9C4C84009CC1C0 /* PreferencesControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2F0D2B1C9C4C84009CC1C0 /* PreferencesControllerSpec.swift */; };
+		1B2F0D2E1C9C4D6E009CC1C0 /* AboutControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2F0D2D1C9C4D6E009CC1C0 /* AboutControllerSpec.swift */; };
 		1B36FFCD1C68988E00596020 /* StartupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B36FFCC1C68988D00596020 /* StartupService.swift */; };
 		1B36FFCE1C68988E00596020 /* StartupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B36FFCC1C68988D00596020 /* StartupService.swift */; };
 		1B4F79211C68A8230062EC15 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4F79201C68A8230062EC15 /* AboutWindow.xib */; };
@@ -70,6 +72,8 @@
 		1B273D151C635D4300F72CDE /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		1B273D1F1C6364EE00F72CDE /* EarthImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthImageService.swift; sourceTree = "<group>"; };
 		1B273D221C63650000F72CDE /* WallpaperManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperManager.swift; sourceTree = "<group>"; };
+		1B2F0D2B1C9C4C84009CC1C0 /* PreferencesControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesControllerSpec.swift; sourceTree = "<group>"; };
+		1B2F0D2D1C9C4D6E009CC1C0 /* AboutControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutControllerSpec.swift; sourceTree = "<group>"; };
 		1B36FFCC1C68988D00596020 /* StartupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupService.swift; sourceTree = "<group>"; };
 		1B4F79201C68A8230062EC15 /* AboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		1B4F79231C68AC770062EC15 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
@@ -158,11 +162,21 @@
 		1B273D011C634CA300F72CDE /* EarthWallpapersTests */ = {
 			isa = PBXGroup;
 			children = (
+				1B2F0D2F1C9C539F009CC1C0 /* Mocks */,
 				1B273D021C634CA300F72CDE /* EarthWallpapersTests.swift */,
 				1B273D041C634CA300F72CDE /* Info.plist */,
 				1BE321B21C74AFA600550439 /* UserDefaultsStoreSpec.swift */,
+				1B2F0D2B1C9C4C84009CC1C0 /* PreferencesControllerSpec.swift */,
+				1B2F0D2D1C9C4D6E009CC1C0 /* AboutControllerSpec.swift */,
 			);
 			path = EarthWallpapersTests;
+			sourceTree = "<group>";
+		};
+		1B2F0D2F1C9C539F009CC1C0 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Mocks;
 			sourceTree = "<group>";
 		};
 		1B4F79261C68E9AD0062EC15 /* Views */ = {
@@ -452,6 +466,7 @@
 			files = (
 				1B4F79291C68F79F0062EC15 /* PreferencesManager.swift in Sources */,
 				1BDA4EE71C6B87A50019041B /* UserDefaultsStore.swift in Sources */,
+				1B2F0D2C1C9C4C84009CC1C0 /* PreferencesControllerSpec.swift in Sources */,
 				1B273D241C63650000F72CDE /* WallpaperManager.swift in Sources */,
 				1B273D1C1C635D4300F72CDE /* Result.swift in Sources */,
 				1BDA4EEF1C6DF33F0019041B /* TimerService.swift in Sources */,
@@ -463,6 +478,7 @@
 				1B273D0F1C634CFC00F72CDE /* AppController.swift in Sources */,
 				1B273D181C635D4300F72CDE /* ImageDownloadService.swift in Sources */,
 				1B4F792C1C69EB770062EC15 /* WallpaperService.swift in Sources */,
+				1B2F0D2E1C9C4D6E009CC1C0 /* AboutControllerSpec.swift in Sources */,
 				1B4F79251C68AC770062EC15 /* AboutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
