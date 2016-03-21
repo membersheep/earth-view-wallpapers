@@ -37,7 +37,13 @@ class PreferencesControllerSpec: QuickSpec {
                 }
             }
             describe("comboBoxSelectionDidChange") {
-                // TODO: Figure out how to test it correctly (create a notification?)
+                it("sets the value in the preferences manager") {
+                    controller.showWindow(self)
+                    
+                    controller.comboBoxSelectionDidChange(NSNotification(name: "testNotification", object: controller.timeComboBox))
+                    
+                    expect(manager.getUpdateInterval().rawValue).to(equal(controller.timeComboBox.objectValueOfSelectedItem as? String))
+                }
             }
         }
     }
