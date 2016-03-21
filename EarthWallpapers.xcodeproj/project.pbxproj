@@ -24,6 +24,7 @@
 		1B2F0D2E1C9C4D6E009CC1C0 /* AboutControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2F0D2D1C9C4D6E009CC1C0 /* AboutControllerSpec.swift */; };
 		1B36FFCD1C68988E00596020 /* StartupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B36FFCC1C68988D00596020 /* StartupService.swift */; };
 		1B36FFCE1C68988E00596020 /* StartupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B36FFCC1C68988D00596020 /* StartupService.swift */; };
+		1B4976AD1CA04458008A8C68 /* PreferencesManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4976AC1CA04458008A8C68 /* PreferencesManagerSpec.swift */; };
 		1B4F79211C68A8230062EC15 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4F79201C68A8230062EC15 /* AboutWindow.xib */; };
 		1B4F79221C68A8230062EC15 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4F79201C68A8230062EC15 /* AboutWindow.xib */; };
 		1B4F79241C68AC770062EC15 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4F79231C68AC770062EC15 /* AboutController.swift */; };
@@ -75,6 +76,7 @@
 		1B2F0D2B1C9C4C84009CC1C0 /* PreferencesControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesControllerSpec.swift; sourceTree = "<group>"; };
 		1B2F0D2D1C9C4D6E009CC1C0 /* AboutControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutControllerSpec.swift; sourceTree = "<group>"; };
 		1B36FFCC1C68988D00596020 /* StartupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupService.swift; sourceTree = "<group>"; };
+		1B4976AC1CA04458008A8C68 /* PreferencesManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesManagerSpec.swift; sourceTree = "<group>"; };
 		1B4F79201C68A8230062EC15 /* AboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		1B4F79231C68AC770062EC15 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		1B4F79271C68F79F0062EC15 /* PreferencesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesManager.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				1BE321B21C74AFA600550439 /* UserDefaultsStoreSpec.swift */,
 				1B2F0D2B1C9C4C84009CC1C0 /* PreferencesControllerSpec.swift */,
 				1B2F0D2D1C9C4D6E009CC1C0 /* AboutControllerSpec.swift */,
+				1B4976AC1CA04458008A8C68 /* PreferencesManagerSpec.swift */,
 			);
 			path = EarthWallpapersTests;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				1B36FFCE1C68988E00596020 /* StartupService.swift in Sources */,
 				1B273D211C6364EE00F72CDE /* EarthImageService.swift in Sources */,
 				1B6DA8C01C64B957008C35FA /* PreferencesController.swift in Sources */,
+				1B4976AD1CA04458008A8C68 /* PreferencesManagerSpec.swift in Sources */,
 				1B273D031C634CA300F72CDE /* EarthWallpapersTests.swift in Sources */,
 				1BE321B31C74AFA600550439 /* UserDefaultsStoreSpec.swift in Sources */,
 				1B273D0F1C634CFC00F72CDE /* AppController.swift in Sources */,
