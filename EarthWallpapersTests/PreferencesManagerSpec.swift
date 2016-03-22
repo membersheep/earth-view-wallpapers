@@ -4,7 +4,7 @@ import Nimble
 class PreferencesManagerSpec: QuickSpec {
     override func spec() {
         describe("PreferencesManagerImpl") {
-            var manager : PreferencesManager!
+            var manager: PreferencesManager!
             var startupService = StartupServiceMock()
             var defaultsStore = UserDefaultsStoreMock()
             let managerDelegate = PreferencesManagerDelegate()
@@ -44,55 +44,57 @@ class PreferencesManagerSpec: QuickSpec {
         }
     }
     
-    class StartupServiceMock: StartupService {
-        var applicationInStartUpItems: Bool = true
-        
-        func applicationIsInStartUpItems() -> Bool {
-            return applicationInStartUpItems
-        }
-        
-        func addApplicationToStartupItems() {
-            applicationInStartUpItems = true
-        }
-        
-        func removeApplicationFromStartupItems() {
-            applicationInStartUpItems = false
-        }
-        
-        func toggleLaunchAtStartup() {
-            applicationInStartUpItems = !applicationInStartUpItems
-        }
+    
+}
+
+class StartupServiceMock: StartupService {
+    var applicationInStartUpItems: Bool = true
+    
+    func applicationIsInStartUpItems() -> Bool {
+        return applicationInStartUpItems
     }
     
-    class UserDefaultsStoreMock: UserDefaultsStore {
-        var startAtLogin = true
-        var updateInterval: Double = 0.0
-        var lastUpdateDate: NSDate?
-        
-        func setStartAtLogin(value: Bool) {
-            startAtLogin = value
-        }
-        func getStartAtLogin() -> Bool {
-            return startAtLogin
-        }
-        func setUpdateInterval(value: Double) {
-            updateInterval = value
-        }
-        func getUpdateInterval() ->  Double {
-            return updateInterval
-        }
-        func setLastUpdateDate(date: NSDate?) {
-            lastUpdateDate = date
-        }
-        func getLastUpdateDate() -> NSDate? {
-            return lastUpdateDate
-        }
+    func addApplicationToStartupItems() {
+        applicationInStartUpItems = true
     }
     
-    class PreferencesManagerDelegate: PreferencesDelegate {
-        var called = false
-        func timeIntervalUpdated(interval: NSTimeInterval) {
-            called = true
-        }
+    func removeApplicationFromStartupItems() {
+        applicationInStartUpItems = false
+    }
+    
+    func toggleLaunchAtStartup() {
+        applicationInStartUpItems = !applicationInStartUpItems
+    }
+}
+
+class UserDefaultsStoreMock: UserDefaultsStore {
+    var startAtLogin = true
+    var updateInterval: Double = 0.0
+    var lastUpdateDate: NSDate?
+    
+    func setStartAtLogin(value: Bool) {
+        startAtLogin = value
+    }
+    func getStartAtLogin() -> Bool {
+        return startAtLogin
+    }
+    func setUpdateInterval(value: Double) {
+        updateInterval = value
+    }
+    func getUpdateInterval() ->  Double {
+        return updateInterval
+    }
+    func setLastUpdateDate(date: NSDate?) {
+        lastUpdateDate = date
+    }
+    func getLastUpdateDate() -> NSDate? {
+        return lastUpdateDate
+    }
+}
+
+class PreferencesManagerDelegate: PreferencesDelegate {
+    var called = false
+    func timeIntervalUpdated(interval: NSTimeInterval) {
+        called = true
     }
 }
