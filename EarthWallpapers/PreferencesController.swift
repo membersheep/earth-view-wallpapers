@@ -30,30 +30,30 @@ class PreferencesController: NSWindowController, NSWindowDelegate, NSComboBoxDel
         
         self.window?.center()
         self.window?.makeKeyAndOrderFront(nil)
-        NSApp.activateIgnoringOtherApps(true)
+        NSApp.activate(ignoringOtherApps: true)
         
         loadPreferences()
     }
     
-    private func loadPreferences() {
+    fileprivate func loadPreferences() {
         guard let prefs = preferencesManager else {
             return
         }
-        self.timeComboBox.selectItemWithObjectValue(prefs.getUpdateInterval().rawValue)
+        self.timeComboBox.selectItem(withObjectValue: prefs.getUpdateInterval().rawValue)
         self.startupCheckBox.state = prefs.getStartAtLogin() ? NSOnState : NSOffState
     }
     
     // MARK: NSButton action
     
-    @IBAction func checkBoxClicked(sender: NSButton) {
+    @IBAction func checkBoxClicked(_ sender: NSButton) {
         let state: Bool = sender.state == NSOnState ? true : false
         preferencesManager?.setStartAtLogin(state)
     }
     
     // MARK: NSComboBoxDelegate
     
-    func comboBoxSelectionDidChange(notification: NSNotification) {
-        guard let selectedValue = notification.object?.objectValueOfSelectedItem as? String else {
+    func comboBoxSelectionDidChange(_ notification: Notification) {
+        guard let selectedValue = (notification.object as AnyObject).objectValueOfSelectedItem as? String else {
             return
         }
         guard let timeInterval = TimeInterval(rawValue: selectedValue) else {

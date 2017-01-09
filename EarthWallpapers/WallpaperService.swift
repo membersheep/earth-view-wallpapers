@@ -8,20 +8,20 @@
 
 import Cocoa
 
-enum WallpaperServiceError: ErrorType {
-    case NoScreensAvailableError
+enum WallpaperServiceError: Error {
+    case noScreensAvailableError
 }
 
 protocol WallpaperService {
-    func setWallpaperImageURL(imageURL: NSURL, completionHandler: Result<Bool, ErrorType> -> Void);
+    func setWallpaperImageURL(_ imageURL: URL, completionHandler: (Result<Bool, Error>) -> Void);
 }
 
 struct WallpaperServiceImpl: WallpaperService {
-    func setWallpaperImageURL(imageURL: NSURL, completionHandler: Result<Bool, ErrorType> -> Void) {
-        let workspace = NSWorkspace.sharedWorkspace()
+    func setWallpaperImageURL(_ imageURL: URL, completionHandler: (Result<Bool, Error>) -> Void) {
+        let workspace = NSWorkspace.shared()
         
         guard let screens = NSScreen.screens() else {
-            completionHandler(Result.Error(WallpaperServiceError.NoScreensAvailableError))
+            completionHandler(Result.error(WallpaperServiceError.noScreensAvailableError))
             return
         }
         
@@ -30,13 +30,13 @@ struct WallpaperServiceImpl: WallpaperService {
         _ = screens.map({
             screen in
             do {
-                try workspace.setDesktopImageURL(imageURL, forScreen: screen, options: workspace.desktopImageOptionsForScreen(screen)!)
+                try workspace.setDesktopImageURL(imageURL, for: screen, options: workspace.desktopImageOptions(for: screen)!)
             } catch {
-                completionHandler(Result.Error(error))
+                completionHandler(Result.error(error))
                 return
             }
         })
         
-        completionHandler(Result.Success(true))
+        completionHandler(Result.success(true))
     }
 }

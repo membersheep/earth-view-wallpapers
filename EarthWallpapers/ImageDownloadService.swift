@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum ImageServiceError: ErrorType {
-    case GenericError
-    case ImageDownloadError(description: String)
-    case ParserError
-    case HTMLDownloadError(description: String)
-    case EmptyResponseError
+enum ImageServiceError: Error {
+    case genericError
+    case imageDownloadError(description: String)
+    case parserError
+    case htmlDownloadError(description: String)
+    case emptyResponseError
 }
 
 protocol ImageDownloadService {
-    func getImage(completionHandler: Result<NSURL, ImageServiceError> -> Void);
+    func getImage(_ completionHandler: (Result<URL, ImageServiceError>) -> Void);
 }

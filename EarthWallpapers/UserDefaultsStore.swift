@@ -9,47 +9,47 @@
 import Foundation
 
 protocol UserDefaultsStore {
-    func setStartAtLogin(value: Bool)
+    func setStartAtLogin(_ value: Bool)
     func getStartAtLogin() -> Bool
-    func setUpdateInterval(value: Double)
+    func setUpdateInterval(_ value: Double)
     func getUpdateInterval() ->  Double
-    func setLastUpdateDate(date: NSDate?)
-    func getLastUpdateDate() -> NSDate?
+    func setLastUpdateDate(_ date: Date?)
+    func getLastUpdateDate() -> Date?
 }
 
 struct UserDefaultsStoreImpl: UserDefaultsStore {
     
-    private let STARTUP_DEFAULTS_KEY = "STARTUP_KEY"
-    private let INTERVAL_DEFAULTS_KEY = "INTERVAL_DEFAULTS_KEY"
-    private let LAST_UPDATE_DEFAULTS_KEY = "LAST_UPDATE_DEFAULTS_KEY"
+    fileprivate let STARTUP_DEFAULTS_KEY = "STARTUP_KEY"
+    fileprivate let INTERVAL_DEFAULTS_KEY = "INTERVAL_DEFAULTS_KEY"
+    fileprivate let LAST_UPDATE_DEFAULTS_KEY = "LAST_UPDATE_DEFAULTS_KEY"
     
-    func setStartAtLogin(value: Bool) {
-        NSUserDefaults.standardUserDefaults().setBool(value, forKey: STARTUP_DEFAULTS_KEY)
-        NSUserDefaults.standardUserDefaults().synchronize()
+    func setStartAtLogin(_ value: Bool) {
+        UserDefaults.standard.set(value, forKey: STARTUP_DEFAULTS_KEY)
+        UserDefaults.standard.synchronize()
     }
     
     func getStartAtLogin() -> Bool {
-        return NSUserDefaults.standardUserDefaults().boolForKey(STARTUP_DEFAULTS_KEY)
+        return UserDefaults.standard.bool(forKey: STARTUP_DEFAULTS_KEY)
     }
     
-    func setUpdateInterval(value: Double) {
-        NSUserDefaults.standardUserDefaults().setDouble(value, forKey: INTERVAL_DEFAULTS_KEY)
-        NSUserDefaults.standardUserDefaults().synchronize()
+    func setUpdateInterval(_ value: Double) {
+        UserDefaults.standard.set(value, forKey: INTERVAL_DEFAULTS_KEY)
+        UserDefaults.standard.synchronize()
     }
     
     func getUpdateInterval() ->  Double {
-        return NSUserDefaults.standardUserDefaults().doubleForKey(INTERVAL_DEFAULTS_KEY)
+        return UserDefaults.standard.double(forKey: INTERVAL_DEFAULTS_KEY)
     }
     
-    func setLastUpdateDate(date: NSDate?) {
+    func setLastUpdateDate(_ date: Date?) {
         guard let newDate = date else {
             return
         }
-        NSUserDefaults.standardUserDefaults().setObject(newDate, forKey: LAST_UPDATE_DEFAULTS_KEY)
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.set(newDate, forKey: LAST_UPDATE_DEFAULTS_KEY)
+        UserDefaults.standard.synchronize()
     }
     
-    func getLastUpdateDate() -> NSDate? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(LAST_UPDATE_DEFAULTS_KEY) as? NSDate
+    func getLastUpdateDate() -> Date? {
+        return UserDefaults.standard.object(forKey: LAST_UPDATE_DEFAULTS_KEY) as? Date
     }
 }

@@ -72,19 +72,19 @@ class UserDefaultsStoreMock: UserDefaultsStore {
     var updateInterval: Double = 0.0
     var lastUpdateDate: NSDate?
     
-    func setStartAtLogin(value: Bool) {
+    func setStartAtLogin(_ value: Bool) {
         startAtLogin = value
     }
     func getStartAtLogin() -> Bool {
         return startAtLogin
     }
-    func setUpdateInterval(value: Double) {
+    func setUpdateInterval(_ value: Double) {
         updateInterval = value
     }
     func getUpdateInterval() ->  Double {
         return updateInterval
     }
-    func setLastUpdateDate(date: NSDate?) {
+    func setLastUpdateDate(_ date: NSDate?) {
         lastUpdateDate = date
     }
     func getLastUpdateDate() -> NSDate? {
@@ -94,7 +94,7 @@ class UserDefaultsStoreMock: UserDefaultsStore {
 
 class PreferencesManagerDelegate: PreferencesDelegate {
     var called = false
-    func timeIntervalUpdated(interval: NSTimeInterval) {
+    func timeIntervalUpdated(_ interval: NSTimeInterval) {
         called = true
     }
 }

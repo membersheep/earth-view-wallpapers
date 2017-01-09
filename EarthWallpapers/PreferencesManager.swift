@@ -10,15 +10,15 @@ import Foundation
 
 protocol PreferencesManager {
     func getStartAtLogin() -> Bool
-    func setStartAtLogin(value: Bool)
+    func setStartAtLogin(_ value: Bool)
     func getUpdateInterval() -> TimeInterval
-    func setUpdateInterval(interval: TimeInterval)
+    func setUpdateInterval(_ interval: TimeInterval)
     
     var delegate: PreferencesDelegate? {get set}
 }
 
 protocol PreferencesDelegate {
-    func timeIntervalUpdated(interval: NSTimeInterval)
+    func timeIntervalUpdated(_ interval: Foundation.TimeInterval)
 }
 
 enum TimeInterval: String {
@@ -30,8 +30,8 @@ enum TimeInterval: String {
 
 class PreferencesManagerImpl: PreferencesManager {
     
-    private var startupService: StartupService
-    private var userDefaultsManager: UserDefaultsStore
+    fileprivate var startupService: StartupService
+    fileprivate var userDefaultsManager: UserDefaultsStore
     
     var delegate: PreferencesDelegate?
     
@@ -44,7 +44,7 @@ class PreferencesManagerImpl: PreferencesManager {
         return startupService.applicationIsInStartUpItems()
     }
     
-    func setStartAtLogin(value: Bool) {
+    func setStartAtLogin(_ value: Bool) {
         if (value) {
             startupService.addApplicationToStartupItems()
         } else {
@@ -67,7 +67,7 @@ class PreferencesManagerImpl: PreferencesManager {
         }
     }
 
-    func setUpdateInterval(interval: TimeInterval) {
+    func setUpdateInterval(_ interval: TimeInterval) {
         var intervalInSeconds: Double = 0;
         switch (interval) {
         case .Never:

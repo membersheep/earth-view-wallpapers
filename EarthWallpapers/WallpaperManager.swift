@@ -10,15 +10,15 @@ import Foundation
 import AppKit
 
 protocol WallpaperManager {
-    func changeWallpaper(completionHandler: Result<Bool, ErrorType> -> Void)
+    func changeWallpaper(_ completionHandler: (Result<Bool, Error>) -> Void)
 }
 
 class WallpaperManagerImpl: WallpaperManager, PreferencesDelegate {
     
-    private var wallpaperService: WallpaperService
-    private var downloadService: ImageDownloadService
-    private var timer: Timer
-    private var userDefaultsManager: UserDefaultsStore
+    fileprivate var wallpaperService: WallpaperService
+    fileprivate var downloadService: ImageDownloadService
+    fileprivate var timer: Timer
+    fileprivate var userDefaultsManager: UserDefaultsStore
     
     init(wallpaperService: WallpaperService, downloadService: ImageDownloadService, timer: Timer, userDefaultsManager: UserDefaultsStore) {
         self.wallpaperService = wallpaperService
@@ -31,7 +31,7 @@ class WallpaperManagerImpl: WallpaperManager, PreferencesDelegate {
         }
     }
     
-    private func isAutoUpdateActive() -> Bool {
+    fileprivate func isAutoUpdateActive() -> Bool {
         guard let _ = userDefaultsManager.getLastUpdateDate() else {
             return false
         }
@@ -41,23 +41,23 @@ class WallpaperManagerImpl: WallpaperManager, PreferencesDelegate {
         return true
     }
     
-    func changeWallpaper(completionHandler: Result<Bool, ErrorType> -> Void) {
+    func changeWallpaper(_ completionHandler: @escaping (Result<Bool, Error>) -> Void) {
         downloadService.getImage({
             result in
             switch result {
-                case .Success(let imageUrl):
+                case .success(let imageUrl):
                     self.wallpaperService.setWallpaperImageURL(imageUrl, completionHandler: {
                         result in
                         switch result {
-                        case .Success(let success):
-                            self.userDefaultsManager.setLastUpdateDate(NSDate())
-                            completionHandler(Result.Success(success))
-                        case .Error(let error):
-                            completionHandler(Result.Error(error))
+                        case .success(let success):
+                            self.userDefaultsManager.setLastUpdateDate(Date())
+                            completionHandler(Result.success(success))
+                        case .error(let error):
+                            completionHandler(Result.error(error))
                         }
                     })
-                case .Error(let error):
-                completionHandler(Result.Error(error))
+                case .error(let error):
+                completionHandler(Result.error(error))
             }
         })
     }
@@ -77,9 +77,9 @@ class WallpaperManagerImpl: WallpaperManager, PreferencesDelegate {
     
     // MARK: PreferencesDelegate
     
-    func timeIntervalUpdated(interval: NSTimeInterval) {
+    func timeIntervalUpdated(_ interval: Foundation.TimeInterval) {
         disableAutoWallpaperUpdate()
-        userDefaultsManager.setLastUpdateDate(NSDate())
+        userDefaultsManager.setLastUpdateDate(Date())
         if (interval > 0.0) {
             enableAutoWallpaperUpdate()
         }

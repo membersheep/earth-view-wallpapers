@@ -13,7 +13,7 @@ class AppController: NSWindowController {
     
     var wallpaperManager: WallpaperManager?
 
-    let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     @IBOutlet weak var statusMenu: NSMenu!
     
     var aboutTransitionClosure:((Void) -> Void)?
@@ -35,7 +35,7 @@ class AppController: NSWindowController {
         
         self.window?.center()
         self.window?.makeKeyAndOrderFront(nil)
-        NSApp.activateIgnoringOtherApps(true)
+        NSApp.activate(ignoringOtherApps: true)
         
         setupStatusIcon()
     }
@@ -43,32 +43,32 @@ class AppController: NSWindowController {
     func setupStatusIcon() {
         statusItem.menu = statusMenu
         let icon = NSImage(named: "StatusIcon")
-        icon?.template = true
+        icon?.isTemplate = true
         statusItem.image = icon
         statusItem.menu = statusMenu
     }
     
     // MARK: Actions
     
-    @IBAction func updateWallpaperButtonClicked(sender: NSMenuItem) {
+    @IBAction func updateWallpaperButtonClicked(_ sender: NSMenuItem) {
         updateWallpaper()
     }
     
-    @IBAction func preferencesButtonClicked(sender: NSMenuItem) {
+    @IBAction func preferencesButtonClicked(_ sender: NSMenuItem) {
         preferencesTransitionClosure?()
     }
     
-    @IBAction func aboutButtonClicked(sender: NSMenuItem) {
+    @IBAction func aboutButtonClicked(_ sender: NSMenuItem) {
         aboutTransitionClosure?()
     }
     
-    @IBAction func quitButtonClicked(sender: AnyObject) {
-        NSApplication.sharedApplication().terminate(self)
+    @IBAction func quitButtonClicked(_ sender: AnyObject) {
+        NSApplication.shared().terminate(self)
     }
     
     // MARK: Reactions
     
-    private func updateWallpaper() {
+    fileprivate func updateWallpaper() {
         guard let wallpaperManager = self.wallpaperManager else {
             showAlert("missing dependencies")
             return
@@ -76,19 +76,19 @@ class AppController: NSWindowController {
         wallpaperManager.changeWallpaper({
             result in
             switch(result){
-            case .Success:
+            case .success:
                 break
-            case .Error(let error):
+            case .error(let error):
                 self.showAlert("\(error)")
                 break
             }
         })
     }
     
-    private func showAlert(text: String) {
+    fileprivate func showAlert(_ text: String) {
         let alert = NSAlert()
         alert.messageText = "Error"
-        alert.addButtonWithTitle("OK")
+        alert.addButton(withTitle: "OK")
         alert.informativeText = text
         alert.runModal()
     }

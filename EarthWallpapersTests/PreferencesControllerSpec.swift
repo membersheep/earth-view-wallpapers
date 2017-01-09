@@ -58,14 +58,14 @@ class PreferencesManagerMock: PreferencesManager {
         return startAtLogin
     }
     
-    func setStartAtLogin(value: Bool) {
+    func setStartAtLogin(_ value: Bool) {
         startAtLogin = value
     }
     
     func getUpdateInterval() -> TimeInterval {
         return timeInterval
     }
-    func setUpdateInterval(interval: TimeInterval) {
+    func setUpdateInterval(_ interval: TimeInterval) {
         timeInterval = interval
     }
     

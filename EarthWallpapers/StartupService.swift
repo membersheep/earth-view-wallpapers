@@ -28,10 +28,10 @@ struct StartupServiceImpl: StartupService {
             nil,
             kLSSharedFileListSessionLoginItems.takeRetainedValue(),
             nil
-            ).takeRetainedValue() as LSSharedFileListRef?
+            ).takeRetainedValue() as LSSharedFileList?
         if loginItemsRef != nil {
             if shouldBeToggled {
-                if let appUrl : CFURLRef = NSURL.fileURLWithPath(NSBundle.mainBundle().bundlePath) {
+                if let appUrl : CFURL = URL(fileURLWithPath: Bundle.main.bundlePath) as CFURL? {
                     LSSharedFileListInsertItemURL(
                         loginItemsRef,
                         itemReferences.lastReference,
@@ -56,24 +56,24 @@ struct StartupServiceImpl: StartupService {
         
     }
     
-    private func getItemReferencesInLoginItems() -> (existingReference: LSSharedFileListItemRef?, lastReference: LSSharedFileListItemRef?) {
-        let itemUrl : UnsafeMutablePointer<Unmanaged<CFURL>?> = UnsafeMutablePointer<Unmanaged<CFURL>?>.alloc(1)
-        if let appUrl : NSURL = NSURL.fileURLWithPath(NSBundle.mainBundle().bundlePath) {
+    fileprivate func getItemReferencesInLoginItems() -> (existingReference: LSSharedFileListItem?, lastReference: LSSharedFileListItem?) {
+        let itemUrl : UnsafeMutablePointer<Unmanaged<CFURL>?> = UnsafeMutablePointer<Unmanaged<CFURL>?>.allocate(capacity: 1)
+        if let appUrl : URL = URL(fileURLWithPath: Bundle.main.bundlePath) {
             let loginItemsRef = LSSharedFileListCreate(
                 nil,
                 kLSSharedFileListSessionLoginItems.takeRetainedValue(),
                 nil
-                ).takeRetainedValue() as LSSharedFileListRef?
+                ).takeRetainedValue() as LSSharedFileList?
             if loginItemsRef != nil {
                 let loginItems: NSArray = LSSharedFileListCopySnapshot(loginItemsRef, nil).takeRetainedValue() as NSArray
                 print("There are \(loginItems.count) login items")
-                let lastItemRef: LSSharedFileListItemRef = loginItems.lastObject as! LSSharedFileListItemRef
-                for var i = 0; i < loginItems.count; ++i {
-                    let currentItemRef: LSSharedFileListItemRef = loginItems.objectAtIndex(i)as! LSSharedFileListItemRef
+                let lastItemRef: LSSharedFileListItem = loginItems.lastObject as! LSSharedFileListItem
+                for i in 0 ..< loginItems.count += 1 {
+                    let currentItemRef: LSSharedFileListItem = loginItems.object(at: i)as! LSSharedFileListItemRef
                     if LSSharedFileListItemResolve(currentItemRef, 0, itemUrl, nil) == noErr {
-                        if let urlRef: NSURL =  itemUrl.memory?.takeRetainedValue() {
+                        if let urlRef: URL =  itemUrl.pointee?.takeRetainedValue() as URL? {
                             print("URL Ref: \(urlRef.lastPathComponent)")
-                            if urlRef.isEqual(appUrl) {
+                            if urlRef == appUrl {
                                 return (currentItemRef, lastItemRef)
                             }
                         }
@@ -94,10 +94,10 @@ struct StartupServiceImpl: StartupService {
             nil,
             kLSSharedFileListSessionLoginItems.takeRetainedValue(),
             nil
-            ).takeRetainedValue() as LSSharedFileListRef?
+            ).takeRetainedValue() as LSSharedFileList?
         if loginItemsRef != nil {
             if shouldBeToggled {
-                if let appUrl : CFURLRef = NSURL.fileURLWithPath(NSBundle.mainBundle().bundlePath) {
+                if let appUrl : CFURL = URL(fileURLWithPath: Bundle.main.bundlePath) as CFURL? {
                     LSSharedFileListInsertItemURL(
                         loginItemsRef,
                         itemReferences.lastReference,

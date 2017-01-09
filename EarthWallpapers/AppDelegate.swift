@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var preferencesController: PreferencesController?
     var aboutController: AboutController?
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         // Create and wire modules
         // TODO: Move to a dedicated factory class/struct
@@ -44,7 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         appController?.showWindow(self)
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 }

@@ -38,6 +38,16 @@
 		1B6DA8BD1C64B61A008C35FA /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B6DA8BB1C64B619008C35FA /* PreferencesWindow.xib */; };
 		1B6DA8BF1C64B957008C35FA /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6DA8BE1C64B957008C35FA /* PreferencesController.swift */; };
 		1B6DA8C01C64B957008C35FA /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6DA8BE1C64B957008C35FA /* PreferencesController.swift */; };
+		1BB47DAF1DE89CCA00986DB5 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB47DAE1DE89CCA00986DB5 /* Request.swift */; };
+		1BB47DB01DE89CCA00986DB5 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB47DAE1DE89CCA00986DB5 /* Request.swift */; };
+		1BB47DB41DE89F6B00986DB5 /* HTMLPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB47DB31DE89F6B00986DB5 /* HTMLPage.swift */; };
+		1BB47DB51DE89F6B00986DB5 /* HTMLPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB47DB31DE89F6B00986DB5 /* HTMLPage.swift */; };
+		1BB47DB71DE8A14700986DB5 /* HTTPRequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB47DB61DE8A14700986DB5 /* HTTPRequestSender.swift */; };
+		1BB47DB81DE8A14700986DB5 /* HTTPRequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB47DB61DE8A14700986DB5 /* HTTPRequestSender.swift */; };
+		1BB47DBA1DE8A1B900986DB5 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB47DB91DE8A1B900986DB5 /* Decodable.swift */; };
+		1BB47DBB1DE8A1B900986DB5 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB47DB91DE8A1B900986DB5 /* Decodable.swift */; };
+		1BB47DBD1DE8A22B00986DB5 /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB47DBC1DE8A22B00986DB5 /* RequestSender.swift */; };
+		1BB47DBE1DE8A22B00986DB5 /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB47DBC1DE8A22B00986DB5 /* RequestSender.swift */; };
 		1BDA4EE61C6B87A50019041B /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDA4EE51C6B87A50019041B /* UserDefaultsStore.swift */; };
 		1BDA4EE71C6B87A50019041B /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDA4EE51C6B87A50019041B /* UserDefaultsStore.swift */; };
 		1BDA4EEE1C6DF33F0019041B /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDA4EED1C6DF33F0019041B /* TimerService.swift */; };
@@ -85,6 +95,11 @@
 		1B4F792A1C69EB770062EC15 /* WallpaperService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperService.swift; sourceTree = "<group>"; };
 		1B6DA8BB1C64B619008C35FA /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 		1B6DA8BE1C64B957008C35FA /* PreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
+		1BB47DAE1DE89CCA00986DB5 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		1BB47DB31DE89F6B00986DB5 /* HTMLPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLPage.swift; sourceTree = "<group>"; };
+		1BB47DB61DE8A14700986DB5 /* HTTPRequestSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequestSender.swift; sourceTree = "<group>"; };
+		1BB47DB91DE8A1B900986DB5 /* Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
+		1BB47DBC1DE8A22B00986DB5 /* RequestSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSender.swift; sourceTree = "<group>"; };
 		1BDA4EE51C6B87A50019041B /* UserDefaultsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsStore.swift; sourceTree = "<group>"; };
 		1BDA4EED1C6DF33F0019041B /* TimerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
 		1BDA4F021C6E24390019041B /* StatusMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusMenu.xib; sourceTree = "<group>"; };
@@ -151,7 +166,7 @@
 		1B273CF11C634CA300F72CDE /* EarthWallpapers */ = {
 			isa = PBXGroup;
 			children = (
-				1B6DA8CA1C650469008C35FA /* Models */,
+				1BB47DB21DE89F4E00986DB5 /* Models */,
 				1B4F79261C68E9AD0062EC15 /* Views */,
 				1B6DA8C71C65040A008C35FA /* Controllers */,
 				1B6DA8C91C650433008C35FA /* Managers */,
@@ -209,8 +224,9 @@
 		1B6DA8C81C65042B008C35FA /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				1B273D131C635D4300F72CDE /* ImageDownloadService.swift */,
+				1BB47DB11DE89D0300986DB5 /* Network */,
 				1B273D1F1C6364EE00F72CDE /* EarthImageService.swift */,
+				1B273D131C635D4300F72CDE /* ImageDownloadService.swift */,
 				1B4F792A1C69EB770062EC15 /* WallpaperService.swift */,
 				1B36FFCC1C68988D00596020 /* StartupService.swift */,
 				1BDA4EED1C6DF33F0019041B /* TimerService.swift */,
@@ -228,10 +244,22 @@
 			name = Managers;
 			sourceTree = "<group>";
 		};
-		1B6DA8CA1C650469008C35FA /* Models */ = {
+		1BB47DB11DE89D0300986DB5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				1BB47DAE1DE89CCA00986DB5 /* Request.swift */,
 				1B273D151C635D4300F72CDE /* Result.swift */,
+				1BB47DB61DE8A14700986DB5 /* HTTPRequestSender.swift */,
+				1BB47DB91DE8A1B900986DB5 /* Decodable.swift */,
+				1BB47DBC1DE8A22B00986DB5 /* RequestSender.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		1BB47DB21DE89F4E00986DB5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1BB47DB31DE89F6B00986DB5 /* HTMLPage.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -252,12 +280,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B273D071C634CA300F72CDE /* Build configuration list for PBXNativeTarget "EarthWallpapers" */;
 			buildPhases = (
-				209FDFB776486F5D8F97C375 /* Check Pods Manifest.lock */,
+				209FDFB776486F5D8F97C375 /* [CP] Check Pods Manifest.lock */,
 				1B273CEB1C634CA300F72CDE /* Sources */,
 				1B273CEC1C634CA300F72CDE /* Frameworks */,
 				1B273CED1C634CA300F72CDE /* Resources */,
-				7CCAC723D884EF1DF98E3DB0 /* Embed Pods Frameworks */,
-				8818EEBCC8D602E3CA75F001 /* Copy Pods Resources */,
+				7CCAC723D884EF1DF98E3DB0 /* [CP] Embed Pods Frameworks */,
+				8818EEBCC8D602E3CA75F001 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -272,12 +300,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B273D0A1C634CA300F72CDE /* Build configuration list for PBXNativeTarget "EarthWallpapersTests" */;
 			buildPhases = (
-				FBA61987BDB3DD14CE6CD8B4 /* Check Pods Manifest.lock */,
+				FBA61987BDB3DD14CE6CD8B4 /* [CP] Check Pods Manifest.lock */,
 				1B273CFA1C634CA300F72CDE /* Sources */,
 				1B273CFB1C634CA300F72CDE /* Frameworks */,
 				1B273CFC1C634CA300F72CDE /* Resources */,
-				5727C8A11A34C2A7F41DE3A8 /* Embed Pods Frameworks */,
-				7EC76678BBA443FCA082B453 /* Copy Pods Resources */,
+				5727C8A11A34C2A7F41DE3A8 /* [CP] Embed Pods Frameworks */,
+				7EC76678BBA443FCA082B453 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -296,14 +324,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = membersheep;
 				TargetAttributes = {
 					1B273CEE1C634CA300F72CDE = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0810;
 					};
 					1B273CFD1C634CA300F72CDE = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0810;
 						TestTargetID = 1B273CEE1C634CA300F72CDE;
 					};
 				};
@@ -353,29 +383,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		209FDFB776486F5D8F97C375 /* Check Pods Manifest.lock */ = {
+		209FDFB776486F5D8F97C375 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		5727C8A11A34C2A7F41DE3A8 /* Embed Pods Frameworks */ = {
+		5727C8A11A34C2A7F41DE3A8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,14 +413,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EarthWallpapersTests/Pods-EarthWallpapersTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7CCAC723D884EF1DF98E3DB0 /* Embed Pods Frameworks */ = {
+		7CCAC723D884EF1DF98E3DB0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,14 +428,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EarthWallpapers/Pods-EarthWallpapers-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7EC76678BBA443FCA082B453 /* Copy Pods Resources */ = {
+		7EC76678BBA443FCA082B453 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,14 +443,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EarthWallpapersTests/Pods-EarthWallpapersTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8818EEBCC8D602E3CA75F001 /* Copy Pods Resources */ = {
+		8818EEBCC8D602E3CA75F001 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,19 +458,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EarthWallpapers/Pods-EarthWallpapers-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FBA61987BDB3DD14CE6CD8B4 /* Check Pods Manifest.lock */ = {
+		FBA61987BDB3DD14CE6CD8B4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -457,10 +487,15 @@
 				1BDA4EEE1C6DF33F0019041B /* TimerService.swift in Sources */,
 				1B36FFCD1C68988E00596020 /* StartupService.swift in Sources */,
 				1B273D201C6364EE00F72CDE /* EarthImageService.swift in Sources */,
+				1BB47DB41DE89F6B00986DB5 /* HTMLPage.swift in Sources */,
 				1B6DA8BF1C64B957008C35FA /* PreferencesController.swift in Sources */,
 				1B273CF31C634CA300F72CDE /* AppDelegate.swift in Sources */,
 				1B273D0E1C634CFC00F72CDE /* AppController.swift in Sources */,
 				1B273D171C635D4300F72CDE /* ImageDownloadService.swift in Sources */,
+				1BB47DBA1DE8A1B900986DB5 /* Decodable.swift in Sources */,
+				1BB47DB71DE8A14700986DB5 /* HTTPRequestSender.swift in Sources */,
+				1BB47DBD1DE8A22B00986DB5 /* RequestSender.swift in Sources */,
+				1BB47DAF1DE89CCA00986DB5 /* Request.swift in Sources */,
 				1B4F792B1C69EB770062EC15 /* WallpaperService.swift in Sources */,
 				1B4F79241C68AC770062EC15 /* AboutController.swift in Sources */,
 			);
@@ -477,11 +512,16 @@
 				1B273D1C1C635D4300F72CDE /* Result.swift in Sources */,
 				1B4976AF1CA05EAC008A8C68 /* WallpaperManagerSpec.swift in Sources */,
 				1BDA4EEF1C6DF33F0019041B /* TimerService.swift in Sources */,
+				1BB47DBB1DE8A1B900986DB5 /* Decodable.swift in Sources */,
+				1BB47DB51DE89F6B00986DB5 /* HTMLPage.swift in Sources */,
 				1B36FFCE1C68988E00596020 /* StartupService.swift in Sources */,
 				1B273D211C6364EE00F72CDE /* EarthImageService.swift in Sources */,
 				1B6DA8C01C64B957008C35FA /* PreferencesController.swift in Sources */,
 				1B4976AD1CA04458008A8C68 /* PreferencesManagerSpec.swift in Sources */,
 				1B273D031C634CA300F72CDE /* EarthWallpapersTests.swift in Sources */,
+				1BB47DB81DE8A14700986DB5 /* HTTPRequestSender.swift in Sources */,
+				1BB47DB01DE89CCA00986DB5 /* Request.swift in Sources */,
+				1BB47DBE1DE8A22B00986DB5 /* RequestSender.swift in Sources */,
 				1BE321B31C74AFA600550439 /* UserDefaultsStoreSpec.swift in Sources */,
 				1B273D0F1C634CFC00F72CDE /* AppController.swift in Sources */,
 				1B273D181C635D4300F72CDE /* ImageDownloadService.swift in Sources */,
@@ -516,6 +556,7 @@
 		1B273D051C634CA300F72CDE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -526,8 +567,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -560,6 +603,7 @@
 		1B273D061C634CA300F72CDE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -570,8 +614,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -590,6 +636,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -597,6 +644,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6236DA0AF5CD157F52A20DC0 /* Pods-EarthWallpapers.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = EarthWallpapers/Info.plist;
@@ -604,6 +652,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = mem.EarthWallpapers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -611,6 +660,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F727396F54068C9A8BFAE78F /* Pods-EarthWallpapers.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = EarthWallpapers/Info.plist;
@@ -618,6 +668,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = mem.EarthWallpapers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -625,12 +676,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BDB20ABA130F43DB148E380E /* Pods-EarthWallpapersTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = EarthWallpapersTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mem.EarthWallpapersTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EarthWallpapers.app/Contents/MacOS/EarthWallpapers";
 			};
 			name = Debug;
@@ -639,12 +692,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DC21823576220AE031EC2F81 /* Pods-EarthWallpapersTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = EarthWallpapersTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mem.EarthWallpapersTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EarthWallpapers.app/Contents/MacOS/EarthWallpapers";
 			};
 			name = Release;

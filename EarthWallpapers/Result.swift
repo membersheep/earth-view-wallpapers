@@ -9,6 +9,6 @@
 import Foundation
 
 enum Result<T, ErrorType> {
-    case Error(ErrorType)
-    case Success(T)
+    case error(ErrorType)
+    case success(T)
 }

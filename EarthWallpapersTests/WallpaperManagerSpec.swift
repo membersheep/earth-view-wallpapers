@@ -53,9 +53,9 @@ class WallpaperManagerSpec: QuickSpec {
 
 class WallpaperServiceMock: WallpaperService {
     var imageSet = false
-    func setWallpaperImageURL(imageURL: NSURL, completionHandler: Result<Bool, ErrorType> -> Void) {
+    func setWallpaperImageURL(_ imageURL: NSURL, completionHandler: (Result<Bool, Error>) -> Void) {
         defer {
-            completionHandler(Result.Success(true))
+            completionHandler(Result.success(true))
         }
         imageSet = true
         return
@@ -64,7 +64,7 @@ class WallpaperServiceMock: WallpaperService {
 
 class ImageDownloadServiceMock: ImageDownloadService {
     var imageDownloaded = false
-    func getImage(completionHandler: Result<NSURL, ImageServiceError> -> Void) {
+    func getImage(_ completionHandler: (Result<NSURL, ImageServiceError>) -> Void) {
         defer {
             completionHandler(Result.Success(NSURL()))
         }
@@ -75,7 +75,7 @@ class ImageDownloadServiceMock: ImageDownloadService {
 
 class TimerMock: Timer {
     var isRunnung = false
-    func start(lastTriggerDate: NSDate, interval: NSTimeInterval, triggerFunction: Void -> Void) {
+    func start(_ lastTriggerDate: NSDate, interval: NSTimeInterval, triggerFunction: (Void) -> Void) {
         isRunnung = true
     }
     

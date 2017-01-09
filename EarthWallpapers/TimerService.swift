@@ -9,21 +9,21 @@
 import Foundation
 
 protocol Timer {
-    func start(lastTriggerDate: NSDate, interval: NSTimeInterval, triggerFunction: Void -> Void)
+    func start(_ lastTriggerDate: Date, interval: Foundation.TimeInterval, triggerFunction: (Void) -> Void)
     func stop()
 }
 
 class TimerService: NSObject, Timer {
     
-    private var timer: NSTimer?
-    private var triggeredClosure:(Void)->Void = {}
+    fileprivate var timer: Foundation.Timer?
+    fileprivate var triggeredClosure:(Void)->Void = {}
     
-    func start(lastTriggerDate: NSDate, interval: NSTimeInterval, triggerFunction: Void -> Void) {
+    func start(_ lastTriggerDate: Date, interval: Foundation.TimeInterval, triggerFunction: @escaping (Void) -> Void) {
         self.triggeredClosure = triggerFunction
-        let fireDate = NSDate(timeInterval: interval, sinceDate: lastTriggerDate)
+        let fireDate = Date(timeInterval: interval, since: lastTriggerDate)
         
-        timer = NSTimer(fireDate: fireDate, interval: interval, target: self, selector: Selector("trigger"), userInfo: nil, repeats: true)
-        NSRunLoop.currentRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+        timer = Foundation.Timer(fireAt: fireDate, interval: interval, target: self, selector: #selector(TimerService.trigger), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
     }
     
     func trigger() {

@@ -1,21 +1,18 @@
 PODS:
-  - Alamofire (3.1.5)
   - HTMLReader (0.9.4)
   - Nimble (3.0.0)
   - Quick (0.9.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.0)
   - HTMLReader (~> 0.9)
   - Nimble (= 3.0.0)
   - Quick (~> 0.9.0)
 
 SPEC CHECKSUMS:
-  Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
   HTMLReader: 03e9da607f2f9924f9cf4b5e5c4143932004257f
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
 
-PODFILE CHECKSUM: f79787798cf6528fa9c5c0cd99185645f37a7101
+PODFILE CHECKSUM: a25568fdfe58998340ea89b83b993753cd32b17c
 
-COCOAPODS: 1.0.0.beta.3
+COCOAPODS: 1.1.1
